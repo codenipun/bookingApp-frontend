@@ -1,0 +1,64 @@
+.navbar{
+    background-color: #003580;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+    
+    
+    
+    >div{
+        position:absolute ;
+        width: 100%;
+        max-width: 1024px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        >div{
+            >button{
+                margin: 20px;
+                border: none;
+                padding: 5px 10px;
+                cursor: pointer;
+                color: #003580;
+
+            }
+        }
+    } 
+}
+
+.logo{
+    font-family: 'Righteous';
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.userimg{
+    width: 30px;
+    height: 30px;
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position:absolute;
+    background-color: white;
+    color: gray;
+    top: 40px;
+    right: 10px;
+    z-index: 3;
+    border-radius: 1px;
+}
+
+.menuItem{
+    padding: 10px;
+    color: gray;
+}
+
+.menuLink{
+    text-decoration: none;
+}

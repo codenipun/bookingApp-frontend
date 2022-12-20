@@ -1,0 +1,61 @@
+.newContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Noto Sans";
+    margin-top: 50px;
+}
+
+.top{
+    > h1{
+        font-family: "Noto Sans";
+        font-size: 25px;
+        margin-bottom: 30px;
+    }
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    gap: 10px;
+}
+.formInput{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 400px;
+}
+
+.rLabel{
+    margin-bottom: -5px;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  
+  .rinput{
+    padding: 10px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  .rButton {
+    border: none;
+    padding: 15px 20px;
+    background-color: #0071c2;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Noto Sans';
+  }
+
+  .register{
+    display: flex;
+    justify-content: flex-end;
+    // align-items: center;
+    font-size: 15px;
+    font-family: "Roboto";
+    font-weight: 500;
+  }
