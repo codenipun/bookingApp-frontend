@@ -53,7 +53,7 @@ const Hotel = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
 
-  const { data, loading, error } = useFetch( `/hotels/find/${id}` );
+  const { data, loading, error } = useFetch( `https://bookingapp-backend.onrender.com/api/hotels/find/${id}` );
   
   const {dates, options} = useContext(SearchContext)
 

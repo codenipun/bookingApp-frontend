@@ -21,7 +21,7 @@ const List = () => {
 
   //custom hook to fetch data from backend
   const { data, loading, error, reFetch } = useFetch(
-    `/hotels?city=${destination}&min=${minP || 0}&max=${maxP || 999}` 
+    `https://bookingapp-backend.onrender.com/api/hotels?city=${destination}&min=${minP || 0}&max=${maxP || 999}` 
   );
 
   const handleClick = () =>{

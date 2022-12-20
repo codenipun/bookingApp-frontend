@@ -18,7 +18,7 @@ const UserRegister = ({ inputs, title }) => {
         ...info,
       };
 
-      await axios.post("/auth/register", newUser);
+      await axios.post("https://bookingapp-backend.onrender.com/api/auth/register", newUser);
       navigate("/")
     } catch (err) {
       console.log(err);

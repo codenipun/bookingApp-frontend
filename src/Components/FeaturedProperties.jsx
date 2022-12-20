@@ -5,7 +5,7 @@ import Loader from './Loader';
 const FeaturedProperties = () => {
 
   const { data, loading } = useFetch(
-    "/hotels?featured=true&limit=4"
+    "https://bookingapp-backend.onrender.com/api/hotels?featured=true&limit=4"
   );
 
   return (
