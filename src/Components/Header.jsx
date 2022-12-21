@@ -40,7 +40,7 @@ const Header = ({type}) => {
                 
                 <p className='headerDesc'>Search low prices on hotels, homes and much more...</p>
                 
-                {!user && <Link to={"/login"}><button className='headerBtn'>Sign in / Register</button></Link>}
+                {!user && <Link to={"/login"}><button className=' headerBtn signbtn'>Sign in / Register</button></Link>}
             </>
         }
         </div>

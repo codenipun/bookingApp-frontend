@@ -14,7 +14,7 @@ const Loader = () => {
         height={100} width={50} />
       <ReactLoading type="cylon" color="#0000FF" 
         height={100} width={50} /> */}
-      <ReactLoading  type="spin" color="#0000FF"
+      <ReactLoading  type="spin" color='#003580'
         height={100} width={50} />
       {/* <ReactLoading type="spokes" color="#0000FF"
         height={100} width={50} />

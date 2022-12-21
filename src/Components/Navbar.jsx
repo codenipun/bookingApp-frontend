@@ -25,7 +25,7 @@ const Navbar = () => {
       <div>
         <Link to={"/"} style={{textDecoration:"none", color:"white"}}>
           <div className='logo'>
-              booking.com
+              Hotel Booking
           </div>
         </Link>
        {user ? <div onClick={()=>setOpenMenu(!openMenu)} >
@@ -41,9 +41,9 @@ const Navbar = () => {
                   <Link className='menuLink'>
                     <div className="menuItem">{user.username}</div>
                   </Link>
-                  {user.username === "codenipun" && <Link className='menuLink'>
-                    <div className="menuItem">ADMIN</div>
-                  </Link>}
+                  {user.username === "codenipun" && 
+                    <div className="menuItem "><a className='adminlink' href='https://booking-app-admin.onrender.com/'>ADMIN</a></div>
+                  }
                   <Link className='menuLink'>
                     <div className="menuItem">Bookings</div>
                   </Link>

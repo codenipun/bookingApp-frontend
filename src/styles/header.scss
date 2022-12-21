@@ -147,3 +147,41 @@
 .headerTitle{
     font-size: 50px;
 }
+
+@media (max-width: 400px) {
+    .headerSearchBar{
+        padding: 0px;
+        max-width: 350px;
+        height: 150px;
+        flex-direction: column;
+        bottom: 9px;
+    }
+    .headerSearchItem{
+        border: 1.5px solid #febb02;
+        border-bottom: 1.5px solid #febb02;
+        width: 100%;
+        justify-content: center;
+        height: 40px;
+    } 
+    .headerBtn{
+        width: 100%;
+    }
+    .headerTitle{
+        font-size: 30px;
+        margin-left: 22px;
+    }
+    .headerDesc{
+        font-size: 14px;
+        margin-left: 22px;
+        margin-top: 10px;
+    }
+    .header{
+        height: 280px;
+    }
+    .signbtn{
+        display:none;
+    }
+    .headerList{
+        display: none;
+    }
+}

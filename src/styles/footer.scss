@@ -25,5 +25,12 @@
 .fText{
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-bottom: 10px;
+}
+
+.gitName{
+    text-decoration: none;
+    color: #003580;
+    font-weight: 500;
 }

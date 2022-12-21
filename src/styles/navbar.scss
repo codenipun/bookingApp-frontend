@@ -36,6 +36,7 @@
 }
 
 .userimg{
+    padding: 10px;
     width: 30px;
     height: 30px;
 }
@@ -61,4 +62,28 @@
 
 .menuLink{
     text-decoration: none;
+}
+
+.adminlink{
+    text-decoration: none;
+    color: gray;
+}
+
+@media (max-width: 400px) {
+    .logo{
+        padding: 5px;
+    }
+    .navbar{
+        >div{
+            >div{
+                >button{
+                    margin: 11px;
+                    border: none;
+                    padding: 3px 4px;
+                    cursor: pointer;
+                    color: #003580;
+                }
+            }
+        }
+    }
 }
