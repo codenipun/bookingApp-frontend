@@ -97,3 +97,38 @@
     cursor: pointer;
     border-radius: 5px;
 }
+.secondContainer{
+    display: flex;
+}
+.myPrice{
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width:450px) {
+    .searchItem{
+        width: 90%;
+    }
+    .secondContainer{
+        flex-direction: column;
+    }
+    .siDetailTexts{
+        margin-top: 5px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .siImg{
+        width: 100px;
+        height: 100px;
+    }
+    .siPrice{
+        font-size : 20px;
+    }
+    .siTaxOp{
+        font-size: 8px;
+    }
+    .myPrice{
+        align-items: flex-start;
+    }
+}

@@ -31,7 +31,9 @@ const List = () => {
   return (
     <div>
       <Navbar/>
-      <Header type="list"/>
+      <div className='listHeader'>
+        <Header type="list"/>
+      </div>
       <div className='listContainer'>
         <div className='listWrapper'>
           <div className='listSearch'>
