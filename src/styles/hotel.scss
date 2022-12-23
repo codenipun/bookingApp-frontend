@@ -136,3 +136,25 @@
     color: lightgray;
     cursor: pointer;
 }
+
+@media (max-width:450px){
+    .hotelHeader{
+        display: none;
+    }
+
+    .hotelWrapper{
+        width: 90%;
+    }
+    .bookNow{
+        width: 106px;
+    }
+    .hotelDetails{
+        flex-direction: column;
+    }
+    .hotelTitle{
+        width: 242px;
+    }
+    .slider{
+        width: 90vw;
+    }
+}

@@ -91,19 +91,22 @@ const Hotel = () => {
   return (
     <div>
       <Navbar/>
-      <Header type={'list'}/>
-        {loading? <Loader/> : <div className='hotelContainer'>
-        {
-          open && <div className="slider">
-            <FontAwesomeIcon icon={faCircleXmark} className='close' onClick={()=>setOpen(false)}
-            />
-            <FontAwesomeIcon icon={faCircleArrowLeft} className='arrow' onClick={()=>handleMove("l")}/>
-            <div className="sliderWrapper">
-              <img src={data.images[slideNumber]} alt="" className="sliderImg" />
+      <div className='hotelHeader'>
+        <Header type={'list'}/>
+      </div>
+        {loading? <Loader/> : 
+        <div className='hotelContainer'>
+          {
+            open && <div className="slider">
+              <FontAwesomeIcon icon={faCircleXmark} className='close' onClick={()=>setOpen(false)}
+              />
+              <FontAwesomeIcon icon={faCircleArrowLeft} className='arrow' onClick={()=>handleMove("l")}/>
+              <div className="sliderWrapper">
+                <img src={data.images[slideNumber]} alt="" className="sliderImg" />
+              </div>
+              <FontAwesomeIcon icon={faCircleArrowRight} className='arrow' onClick={()=>handleMove("r")}/>
             </div>
-            <FontAwesomeIcon icon={faCircleArrowRight} className='arrow' onClick={()=>handleMove("r")}/>
-          </div>
-        }
+          }
           <div className='hotelWrapper'>
             <button className='bookNow' onClick={handleBook}>Reserve or Book Now!</button>
             <h1 className='hotelTitle'>{data.name}</h1>
@@ -115,9 +118,9 @@ const Hotel = () => {
             <span className="hotelPriceHighlight">Book a stay over ${data.cheapestPrice} at this property and get a free air taxi</span>
             <div className="hotelImages">
               {
-                data.images?.map((photo, i)=>(
+                photos.map((photo, i)=>(
                   <div className="hotelImgWrapper">
-                    <img onClick={()=>handleOpen(i)} src={photo} alt="" className='hotelImg' />
+                    <img onClick={()=>handleOpen(i)} src={photo.src} alt="" className='hotelImg' />
                   </div>
                 ))
               }
