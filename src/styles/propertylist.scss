@@ -1,5 +1,5 @@
 .pList{
-    width: 100%;
+    width: 90%;
     max-width: 1024px;
     display: flex;
     justify-content: space-between;
@@ -28,4 +28,27 @@
 .pListTitles>h2{
     font-size: 14px;
     font-weight: 300;
+}
+
+@media (max-width:450px) {
+    .pList{
+        display: flex;
+        overflow-x: auto;
+        gap: 10px;
+        padding:10px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .pListImg{
+        width: 100px;
+        height: 100px;
+    }
+
+    .pListTitles>h1{
+        font-size: 10px;
+        padding: 2px;
+    }
+    .pListTitles>h2{
+        font-size: 12px;
+    }
 }

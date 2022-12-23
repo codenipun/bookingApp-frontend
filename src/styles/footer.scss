@@ -34,3 +34,14 @@
     color: #003580;
     font-weight: 500;
 }
+
+@media (max-width: 450px) {
+    .footer{
+        width: 90%;
+        font-size: 7px;
+        margin: 5px;
+    }  
+    .fText{
+        font-size: 12px;
+    }  
+}

@@ -2,8 +2,8 @@
     width: 100%;
     max-width: 1024px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    // justify-content: center;
+    // align-items: center;
     gap: 20px;
     z-index: 1;
     font-family: 'Roboto';
@@ -12,8 +12,7 @@
 .featuredItem{
     position: relative;
     color: white;
-    border-radius: 10px;
-    overflow: hidden;
+    // overflow: hidden;
     height: 250px;
     flex:1;
     cursor: pointer;
@@ -22,6 +21,7 @@
 .featuredImg{
     width: 100%;
     height: 100%;
+    border-radius: 10px;
     object-fit: cover;
 }
   
@@ -31,3 +31,25 @@
     left: 20px;
 }
 
+@media (max-width : 450px){
+    .featured{
+        width: 90%;
+        display: flex;
+        overflow-x: auto;
+        gap: 10px;
+    }
+    .featuredItem{
+        // padding: 5px;
+        height: 163px;
+    }
+    .featuredTitles{
+        bottom: 15px;
+        left: 10px;
+        font-size: 10px;
+    }
+    .featuredImg{
+        width: 150px;
+        height: 150px;
+        border-radius: 10px;
+    }
+}
