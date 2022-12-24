@@ -1,3 +1,11 @@
+.new{
+  width: 100%;
+  max-height: 1024px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .newContainer{
     display: flex;
     flex-direction: column;
@@ -5,6 +13,8 @@
     align-items: center;
     font-family: "Noto Sans";
     margin-top: 50px;
+    margin-bottom: 50px;
+    // height: 1000px;
 }
 
 .top{
@@ -58,4 +68,14 @@
     font-size: 15px;
     font-family: "Roboto";
     font-weight: 500;
+  }
+
+  @media (max-width : 450px) {
+    .form{
+      width: 260px;
+      height: 700px;
+    }
+    .formInput{
+      width: 260px;
+    }
   }
