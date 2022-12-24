@@ -44,7 +44,7 @@ const Footer = () => {
           <li className="fListItem">Terms & conditions</li>
         </ul>
       </div>
-      <div className="fText">Made with by ❤️ <a className='gitName' href='https://www.github.com/codenipun'>codenipun</a></div>
+      <div className="fText">Made with ❤️ by <a className='gitName' href='https://www.github.com/codenipun'>codenipun</a></div>
     </div>
   )
 }

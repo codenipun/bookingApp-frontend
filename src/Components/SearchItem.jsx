@@ -27,7 +27,7 @@ const SearchItem = ({item}) => {
           <div className='siDetails'>
               {item.rating && <div className="siRating">
                 <span>Excellent</span>
-                <button>{item.rating}</button>
+                <button>{item.rating}⭐</button>
               </div>}
               <div className="siDetailTexts">
                   <div className='myPrice'>

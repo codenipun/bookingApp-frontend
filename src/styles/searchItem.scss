@@ -42,6 +42,12 @@
 }
 .siFeatures{
     font-size: 12px;
+    overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 3; 
+           line-clamp: 3;
+   -webkit-box-orient: vertical;
 }
 
 .siCancelOp{
@@ -61,11 +67,13 @@
 }
 .siRating{
     display: flex;
-    justify-content: space-between
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 
 .siRating>span{
     font-weight: 500;
+    padding: 4px;
 }
 .siRating>button{
     background-color: #003580;

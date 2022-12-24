@@ -58,11 +58,11 @@ const List = () => {
               <div className='lsOptions'>
                 <div className='lsOptionItem'>
                   <span className='lsOptionText'>Min Price <small>(per night)</small></span>
-                  <input className='lsOptionInput' type={'number'} onChange={e=>setMinP(e.target.value)}/>
+                  <input className='lsOptionInput' type={'number'} placeholder='0' onChange={e=>setMinP(e.target.value)}/>
                 </div>                
                 <div className='lsOptionItem'>
                   <span className='lsOptionText'>Max Price <small>(per night)</small></span>
-                  <input className='lsOptionInput' type={'number'} onChange={e=>setMaxP(e.target.value)}/>
+                  <input className='lsOptionInput' type={'number'} placeholder='999' onChange={e=>setMaxP(e.target.value)}/>
                 </div>
                 <div className='lsOptionItem'>
                   <span className='lsOptionText'>Adults</span>

@@ -50,7 +50,7 @@ const Searchbar = () => {
             <input type='text'
                  placeholder='Where are you going?'
                  className='headerSearchInput'
-                    onChange={e=>setDestination(e.target.value)}
+                    onChange={e=>setDestination((e.target.value).toLowerCase())}
                  />
         </div>
         <div className='headerSearchItem'>
