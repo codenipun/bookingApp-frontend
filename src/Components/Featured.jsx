@@ -6,7 +6,7 @@ import Loader from './Loader';
 const Featured = () => {
 
     const { data, loading} = useFetch(
-        "https://bookingapp-backend.onrender.com/api/hotels/countByCity?cities=delhi,mumbai,goa,lonavla"
+        "https://bookingapp-backend.onrender.com/api/hotels/countByCity?cities=delhi,mumbai,goa,lonavla,agra"
       );
     // console.log(data);
   return (
@@ -50,17 +50,17 @@ const Featured = () => {
                 />
                 <div className="featuredTitles">
                     <h1>Lonavla</h1>
-                    <h2>{data[2]} properties</h2>
+                    <h2>{data[3]} properties</h2>
                 </div>
             </div>
             <div className='featuredItem'>
-                <img src="https://q-xx.bstatic.com/xdata/images/region/250x250/49646.jpg?k=b7f38878b9164ee38e0b99c4d4646dbea76b7bf4add8464b1aa75e4c9d0efc6e&o="
+                <img src="https://r-xx.bstatic.com/xdata/images/city/250x250/684501.jpg?k=225f7713b3f47f0c2c580c34c35582ba70331757bcc8dc32e7f17072c80805ff&o="
                     alt=""
                     className="featuredImg"
                 />
                 <div className="featuredTitles">
-                    <h1>Goa</h1>
-                    <h2>{data[2]} properties</h2>
+                    <h1>Agra</h1>
+                    <h2>{data[4]} properties</h2>
                 </div>
             </div>
         </>}

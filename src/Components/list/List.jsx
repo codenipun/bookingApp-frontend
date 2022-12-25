@@ -21,7 +21,7 @@ const List = () => {
 
   //custom hook to fetch data from backend
   const { data, loading, error, reFetch } = useFetch(
-    `https://bookingapp-backend.onrender.com/api/hotels?city=${destination}&min=${minP || 0}&max=${maxP || 49999}` 
+    `https://bookingapp-backend.onrender.com/api/hotels?city=${destination}&min=${minP || 0}&max=${maxP || 19999}` 
   );
 
   const handleClick = () =>{
@@ -62,7 +62,7 @@ const List = () => {
                 </div>                
                 <div className='lsOptionItem'>
                   <span className='lsOptionText'>Max Price <small>(per night)</small></span>
-                  <input className='lsOptionInput' type={'number'} placeholder='999' onChange={e=>setMaxP(e.target.value)}/>
+                  <input className='lsOptionInput' type={'number'} placeholder='19999' onChange={e=>setMaxP(e.target.value)}/>
                 </div>
                 <div className='lsOptionItem'>
                   <span className='lsOptionText'>Adults</span>
