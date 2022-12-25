@@ -31,7 +31,7 @@ const SearchItem = ({item}) => {
               </div>}
               <div className="siDetailTexts">
                   <div className='myPrice'>
-                    <span className="siPrice">${item.cheapestPrice}</span>
+                    <span className="siPrice">₹ {item.cheapestPrice}</span>
                     <span className="siTaxOp">Includes taxes and fees</span>
                   </div>
                   <Link to={`/hotels/${item._id}`}>

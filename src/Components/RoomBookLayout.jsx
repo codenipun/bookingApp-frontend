@@ -61,6 +61,7 @@ const RoomBookLayout = ({setOpen, hotelid}) => {
       navigate("/");
     } catch (err) {}
     }
+    console.log(data)
   return (
     <div className='reserve'>
       <div className='rContainer'>
@@ -71,7 +72,8 @@ const RoomBookLayout = ({setOpen, hotelid}) => {
         />
         <span>
             <h2 className='heading'>Select your Rooms</h2>
-            {data.map((item) => (
+            {data.length===0 ? <h1 className='noRoom'
+            >No Rooms to show</h1> :  data.map((item) => (
           <div className="rItem" key={item._id}>
             <div className="rItemInfo">
               <div className="rTitle">{item.title}</div>
@@ -79,7 +81,7 @@ const RoomBookLayout = ({setOpen, hotelid}) => {
               <div className="rMax">
                 Max people: <b>{item.maxPeople}</b>
               </div>
-              <div className="rPrice">Price : $ {item.price}</div>
+              <div className="rPrice">Price : ₹ {item.price}</div>
             </div>
             <div className="rSelectRooms">
               {item.roomNumbers.map((roomNumber) => (

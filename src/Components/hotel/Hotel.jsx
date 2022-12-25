@@ -115,7 +115,7 @@ const Hotel = () => {
               <span>{data.address}</span>
             </div>
             <span className="hotelDistance">Excellent location - {data.distance}m from center</span>
-            <span className="hotelPriceHighlight">Book a stay over ${data.cheapestPrice} at this property and get a free air taxi</span>
+            <span className="hotelPriceHighlight">Book a stay over ₹{data.cheapestPrice} at this property and get a free air taxi</span>
             <div className="hotelImages">
               {
                 photos.map((photo, i)=>(
@@ -135,7 +135,7 @@ const Hotel = () => {
                 <h1>Perfect for a {days}-night stay</h1>
                 <span>Located in the real heart of krakov, this property has an
                 excellent location score of 9.8!</span>
-                <h2><b>${days * data.cheapestPrice * options.rooms}</b>({days} nights)</h2>
+                <h2><b>₹{days * data.cheapestPrice * options.rooms}</b>({days} nights)</h2>
                 <button onClick={handleBook}>Reserve or Book Now!</button>
               </div>
             </div>

@@ -13,6 +13,8 @@ const Home = () => {
       <Navbar/>
       <Header/>
       <div className='homecontainer'>
+        <h1 className='homeTitle'>Explore India</h1>
+        <h2 className='homeTitle'>These popular destinations have a lot to offer</h2>
         <Featured/>
         <h1 className='homeTitle'>Browse by property type</h1>
         <PropertyList/>

@@ -6,20 +6,24 @@
     // align-items: center;
     gap: 20px;
     z-index: 1;
+    overflow-x: auto;
+    // overflow-x: hidden;
     font-family: 'Roboto';
   }
-
+.featured::-webkit-scrollbar {
+    display: none;
+}
 .featuredItem{
     position: relative;
     color: white;
     // overflow: hidden;
-    height: 250px;
+    height: 100%;
     flex:1;
     cursor: pointer;
 }
 
 .featuredImg{
-    width: 100%;
+    width: 300px;
     height: 100%;
     border-radius: 10px;
     object-fit: cover;
