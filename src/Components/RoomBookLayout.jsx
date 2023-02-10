@@ -5,6 +5,7 @@ import useFetch from '../hooks/useFetch'
 import { SearchContext } from '../context/SearchContext'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { message } from 'antd';
 
 const RoomBookLayout = ({setOpen, hotelid}) => {
     const navigate = useNavigate();
@@ -57,6 +58,7 @@ const RoomBookLayout = ({setOpen, hotelid}) => {
           return res.data;
         })
       );
+      message.success('Booking Successful');
       setOpen(false);
       navigate("/");
     } catch (err) {}
