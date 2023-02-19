@@ -69,12 +69,13 @@
     color: gray;
 }
 
-@media (max-width: 450px) {
+@media (max-width: 751px) {
     .logo{
         padding: 5px;
     }
     .navbar{
         >div{
+            max-width: 725px;
             >div{
                 >button{
                     margin: 11px;

@@ -46,7 +46,7 @@ const List = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const isMobile = windowDimension <= 400;
+  const isMobile = windowDimension <= 750;
 
   if(!isMobile){
       openFilter = true;
