@@ -101,4 +101,16 @@
   .listResult{
 
   }
+  .mobileFilterView{
+    display: flex;
+    background-color: #febb02;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #555;
+    font-weight: 500;
+  }
 }

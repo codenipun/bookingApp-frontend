@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import Header from '../Header'
 import Navbar from '../Navbar'
@@ -10,6 +10,7 @@ import Loader from '../Loader'
 
 const List = () => {
   const location = useLocation();
+  let [openFilter, setOpenFilter] = useState(false);
   const [destination, setDestination] = useState(location.state.destination);
   const [openDate, setOpenDate] = useState(false);
   const [dates, setDates] = useState(location.state.dates);
@@ -18,6 +19,7 @@ const List = () => {
   const [minP, setMinP] = useState(undefined);
   const [maxP, setMaxP] = useState(undefined);
   
+  
 
   //custom hook to fetch data from backend
   const { data, loading, error, reFetch } = useFetch(
@@ -25,10 +27,39 @@ const List = () => {
   );
 
   const handleClick = () =>{
+    setOpenFilter(!openFilter)
     reFetch();
   }
 
+  const [windowDimension, setWindowDimension] = useState(null);
+
+  useEffect(() => {
+    setWindowDimension(window.innerWidth);
+  }, []);
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimension(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const isMobile = windowDimension <= 400;
+
+  if(!isMobile){
+      openFilter = true;
+  }
+
+  const handleFilterClick = () =>{
+    if(isMobile){
+      setOpenFilter(!openFilter);
+    }
+  }
+  
   return (
+    
     <div>
       <Navbar/>
       <div className='listHeader'>
@@ -36,7 +67,11 @@ const List = () => {
       </div>
       <div className='listContainer'>
         <div className='listWrapper'>
-          <div className='listSearch'>
+          {
+            !openFilter ? (<div onClick={handleFilterClick} className='mobileFilterView'>
+              Search Filters
+            </div>) : (
+              <div className='listSearch'>
             <h1 className='lsTitle'>Search</h1>
             <div className='lsItem'>
               <label>Destination</label>
@@ -80,6 +115,8 @@ const List = () => {
             </div>
             <button onClick={handleClick}>Search</button>
           </div>
+            )
+          }
           <div className='listResult'>
               {loading ? <Loader/> : 
                 <>
