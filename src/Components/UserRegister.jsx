@@ -20,7 +20,7 @@ const UserRegister = ({ inputs, title }) => {
       };
 
       await axios.post("https://bookingapp-backend.onrender.com/api/auth/register", newUser);
-      navigate("/")
+      navigate("/login")
     } catch (err) {
       console.log(err);
     }
@@ -52,7 +52,7 @@ const UserRegister = ({ inputs, title }) => {
                   </div>
                 ))}
                 <button className="rButton" onClick={handleClick}>Send</button>
-                <span className='register'>Already a User? &nbsp; <a href='/register'> Login</a></span>
+                <span className='register'>Already a User? &nbsp; <a href='/login'> Login</a></span>
               </form>
             </div>
           </div>
