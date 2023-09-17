@@ -26,6 +26,10 @@ const UserRegister = ({ inputs, title }) => {
     }
   };
 
+  const handleLoginClick = () =>{
+    navigate("/login")
+  }
+
   // console.log(info);
   return (
     <>
@@ -52,7 +56,7 @@ const UserRegister = ({ inputs, title }) => {
                   </div>
                 ))}
                 <button className="rButton" onClick={handleClick}>Send</button>
-                <span className='register'>Already a User? &nbsp; <a href='/login'> Login</a></span>
+                <span onClick={handleLoginClick} className='register'>Already a User? &nbsp; <span className="loginBtn">Sign-in</span></span>
               </form>
             </div>
           </div>

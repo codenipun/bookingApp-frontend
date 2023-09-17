@@ -49,6 +49,24 @@
   font-family: 'Noto Sans';
 }
 
+.registerBtn{
+  // background-color: blue;
+  // color: white;
+  // padding: 1px;
+  color: blue;
+  cursor: pointer;
+}
+
+.registerBtn:hover{
+  background-color: #0071c2;
+  padding-left: 3px;
+  padding-right: 3px;
+  padding: 1px;
+  color: white;
+  border-radius: 2px;
+  font-size: 14px;
+}
+
 .lButton:disabled{
   background-color: #0071c28c;
   cursor: not-allowed;

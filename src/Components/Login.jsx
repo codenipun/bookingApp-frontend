@@ -31,6 +31,10 @@ const Login = () => {
             dispatch({type : "LOGIN_FAILURE", payload : err.response.data});
         }
     }
+
+    const handleRegisterClick = () =>{
+        navigate("/register")
+    }
   return (
     <>   
     <Navbar/>
@@ -44,7 +48,7 @@ const Login = () => {
                 <label className='lLabel'>Password</label>
                 <input required className='linput' type={'password'} id='password' onChange={handleChange}></input>
                 <button type='submit' disabled={loading} className='lButton' onClick={handleClick}>Login</button>
-                <span className='newUser'>New User? &nbsp; <a href='/register'> Sign Up</a></span>
+                <span onClick={handleRegisterClick} className='newUser'>New User? &nbsp; <span className='registerBtn'> Sign Up</span></span>
                 {
                     error && <div>
                         <span>{error.message}</span>
