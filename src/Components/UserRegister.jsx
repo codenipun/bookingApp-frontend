@@ -55,7 +55,7 @@ const UserRegister = ({ inputs, title }) => {
                     />
                   </div>
                 ))}
-                <button className="rButton" onClick={handleClick}>Send</button>
+                <button className="rButton" onClick={handleClick}>Submit</button>
                 <span onClick={handleLoginClick} className='register'>Already a User? &nbsp; <span className="loginBtn">Sign-in</span></span>
               </form>
             </div>

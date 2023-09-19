@@ -14,7 +14,6 @@
     font-family: "Noto Sans";
     margin-top: 50px;
     margin-bottom: 50px;
-    // height: 1000px;
 }
 
 .top{
@@ -50,39 +49,32 @@
     margin-bottom: 10px;
   }
 
-  .rButton {
-    border: none;
-    padding: 15px 20px;
-    background-color: #0071c2;
-    color: white;
-    font-weight: bold;
+  .rButton {    
+    margin: 15px 0 0;
+    width: 100%;
+    padding: 16px 18px;
+    font-size: 1.071em;
+    line-height: normal;
     cursor: pointer;
-    border-radius: 5px;
-    font-family: 'Noto Sans';
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #0071c2;
+    border: 1px solid #0071c2;
+    color: #fff;
+    border-radius: 4px 4px 4px 4px;
+    -webkit-border-radius: 4px 4px 4px 4px;
   }
 
   .loginBtn{
-    // background-color: blue;
-    // color: white;
-    // padding: 1px;
     color: blue;
     cursor: pointer;
-  }
-
-  .loginBtn:hover{
-    background-color: #0071c2;
-    padding-left: 3px;
-    padding-right: 3px;
-    padding: 1px;
-    color: white;
-    border-radius: 2px;
-    font-size: 14px;
   }
 
   .register{
     display: flex;
     justify-content: flex-end;
-    // align-items: center;
     font-size: 15px;
     font-family: "Roboto";
     font-weight: 500;

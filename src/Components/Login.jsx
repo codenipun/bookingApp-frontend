@@ -5,6 +5,7 @@ import { AuthContext } from '../context/AuthContext'
 import Footer from './Footer';
 import Loader from './Loader';
 import Navbar from './Navbar';
+import loginImg from '../Images/login-illustration.png'
 
 const Login = () => {
     
@@ -41,19 +42,27 @@ const Login = () => {
     {
       loading ? <Loader/> :
        <div className='login'>
-            <div className='lContainer'>
-                <h1>Sign in or create an account</h1>
-                <label className='lLabel'>Username</label>
-                <input required className='linput' type={'text'} id='username' onChange={handleChange}></input>
-                <label className='lLabel'>Password</label>
-                <input required className='linput' type={'password'} id='password' onChange={handleChange}></input>
-                <button type='submit' disabled={loading} className='lButton' onClick={handleClick}>Login</button>
-                <span onClick={handleRegisterClick} className='newUser'>New User? &nbsp; <span className='registerBtn'> Sign Up</span></span>
-                {
-                    error && <div>
-                        <span>{error.message}</span>
-                    </div>
-                }
+            <div className='login_subContainer1'>
+                <div className='login_img_container'>
+                    <img className = "login_img" src={loginImg} alt='Login Img' width={369}></img>
+                    <p>Create your profile now and be eligible for crazy discounts on Hotels, Flights, Taxies and more</p>
+                </div>
+                <div className='lContainer'>
+                    <span className='newUser'>New to Hotel Booking? &nbsp; <span onClick={handleRegisterClick} className='registerBtn'>Register</span></span>
+                    <hr className='line'></hr>
+                    <h1>Login</h1>
+                    <label className='lLabel'>Username</label>
+                    <input required className='linput' type={'text'} id='username' onChange={handleChange}></input>
+                    <label className='lLabel'>Password</label>
+                    <input required className='linput' type={'password'} id='password' onChange={handleChange}></input>
+                    <span className='newUser registerBtn'>Forget Password?</span>
+                    <button type='submit' disabled={loading} className='lButton' onClick={handleClick}>Login</button>
+                    {
+                        error && <div>
+                            <span>{error.message}</span>
+                        </div>
+                    }
+                </div>
             </div>
             <div className='foot'>
                 <Footer/>
