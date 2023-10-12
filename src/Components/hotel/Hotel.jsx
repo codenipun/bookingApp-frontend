@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react'
-import Footer from '../Footer'
-import Header from '../Header'
-import MailList from '../MailList'
-import Navbar from '../Navbar'
+import Footer from '../Footer/Footer'
+import Header from '../Header/Header'
+import MailList from '../MailList/MailList'
+import Navbar from '../Navbar/Navbar'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {
   faCircleArrowLeft,
@@ -15,8 +15,10 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { SearchContext } from '../../context/SearchContext'
 import { parseWithOptions } from 'date-fns/fp'
 import { AuthContext } from '../../context/AuthContext'
-import RoomBookLayout from '../RoomBookLayout'
-import Loader from '../Loader'
+import RoomBookLayout from '../RoomBookLayout/RoomBookLayout'
+import Loader from '../Loader/Loader'
+import "./hotel.scss"
+// import "../Hotel/hotel.scss"
 
 
 const Hotel = () => {

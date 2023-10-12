@@ -1,11 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCircleXmark} from "@fortawesome/free-solid-svg-icons"
 import React, { useContext, useState } from 'react'
-import useFetch from '../hooks/useFetch'
-import { SearchContext } from '../context/SearchContext'
+import useFetch from '../../hooks/useFetch'
+import { SearchContext } from '../../context/SearchContext'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { message } from 'antd';
+import "./roomBookLayout.scss"
 
 const RoomBookLayout = ({setOpen, hotelid}) => {
     const navigate = useNavigate();

@@ -1,11 +1,12 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../context/AuthContext'
-import Footer from './Footer';
-import Loader from './Loader';
-import Navbar from './Navbar';
-import loginImg from '../Images/login-illustration.png'
+import { AuthContext } from '../../context/AuthContext'
+import Footer from '../Footer/Footer';
+import Loader from '../Loader/Loader';
+import Navbar from '../Navbar/Navbar';
+import loginImg from '../../Images/login-illustration.png'
+import "./login.scss"
 
 const Login = () => {
     

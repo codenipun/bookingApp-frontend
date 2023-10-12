@@ -1,8 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
+import "./userRegister.scss"
 
 const UserRegister = ({ inputs, title }) => {
   const navigate = useNavigate();

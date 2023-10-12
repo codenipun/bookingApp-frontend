@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faBed, faPlane, faTaxi, faCar} from '@fortawesome/free-solid-svg-icons'
-import Searchbar from './Searchbar'
-import { AuthContext } from '../context/AuthContext'
+import Searchbar from '../Searchbar'
+import { AuthContext } from '../../context/AuthContext'
 import { Link } from 'react-router-dom'
+import "./header.scss"
 
 const Header = ({type}) => {
     const {user} = useContext(AuthContext);

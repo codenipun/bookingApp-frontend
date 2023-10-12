@@ -1,6 +1,7 @@
 import React from 'react'
-import useFetch from '../hooks/useFetch';
-import Loader from './Loader';
+import useFetch from '../../hooks/useFetch';
+import Loader from '../Loader/Loader';
+import "./featuredProperties.scss"
 
 const FeaturedProperties = () => {
 

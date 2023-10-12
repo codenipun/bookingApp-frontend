@@ -1,6 +1,7 @@
 import React from 'react'
 import {useNavigate } from 'react-router-dom'
 import { message } from 'antd';
+import "./maillist.scss"
 
 const MailList = () => {
   const navigate = useNavigate();

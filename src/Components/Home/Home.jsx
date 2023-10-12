@@ -1,11 +1,13 @@
 import React from 'react'
-import Featured from '../Featured'
-import FeaturedProperties from '../FeaturedProperties'
-import Footer from '../Footer'
-import Header from '../Header'
-import MailList from '../MailList'
-import Navbar from '../Navbar'
-import PropertyList from '../PropertyList'
+import Featured from '../Featured/Featured'
+import FeaturedProperties from '../FeaturedProperties/FeaturedProperties'
+import Footer from '../Footer/Footer'
+import Header from '../Header/Header'
+import MailList from '../MailList/MailList'
+import Navbar from '../Navbar/Navbar'
+import PropertyList from '../PropertyList/PropertyList'
+
+import "./home.scss"
 
 const Home = () => {
   return (

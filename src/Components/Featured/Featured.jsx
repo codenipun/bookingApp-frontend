@@ -1,8 +1,9 @@
 import React, { useContext } from 'react'
-import useFetch from "../hooks/useFetch"
-import Loader from './Loader';
+import useFetch from "../../hooks/useFetch"
+import Loader from '../Loader/Loader';
 import { useNavigate } from 'react-router-dom';
-import { SearchContext } from '../context/SearchContext';
+import { SearchContext } from '../../context/SearchContext';
+import "./featured.scss"
 
 const Featured = () => {
     const navigate = useNavigate()
@@ -30,7 +31,7 @@ const Featured = () => {
         dispatch({type:"NEW_SEARCH", payload:{destination:city, dates, options}});
         navigate("/hotels", {state:{destination:city, dates, options}})
     }
-
+    
     
   return (
     <div className='featured'>

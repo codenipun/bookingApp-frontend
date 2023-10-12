@@ -1,26 +1,28 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Home from './Components/Home/Home';
-import Hotel from './Components/hotel/Hotel';
+// import Hotel from './Components/Hotel/Hotel';
 import List from './Components/list/List';
-import {userInputs} from "../src/Components/FormSource"
+import {userInputs} from "./Components/FormSource/FormSource"
+import Hotel from './Components/Hotel/Hotel';
+import UserRegister from './Components/UserRegister/UserRegister';
+import Login from './Components/Login/Login';
 
-import './styles/app.scss'
-import './styles/home.scss'
-import './styles/header.scss'
-import './styles/featured.scss'
-import './styles/navbar.scss'
-import './styles/propertylist.scss'
-import './styles/featuredProperties.scss'
-import './styles/maillist.scss'
-import './styles/footer.scss'
-import './styles/list.scss'
-import './styles/hotel.scss'
-import Login from './Components/Login';
-import './styles/login.scss'
-import './styles/userRegister.scss'
-import './styles/roomBookLayout.scss'
-import './styles/loader.scss'
-import UserRegister from './Components/UserRegister';
+import './app.scss'
+// import './styles/home.scss'
+// import './styles/header.scss'
+// import './styles/featured.scss'
+// import './styles/navbar.scss'
+// import './styles/propertylist.scss'
+// import './styles/featuredProperties.scss'
+// import './styles/maillist.scss'
+// import './styles/footer.scss'
+// import './styles/list.scss'
+// import './styles/hotel.scss'
+// import './styles/login.scss'
+// import './styles/userRegister.scss'
+// import './styles/roomBookLayout.scss'
+// import './styles/loader.scss'
+// import "./Components/Hotel/hotel.scss"
 
 function App() {
   return (

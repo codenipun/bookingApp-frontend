@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import Header from '../Header'
-import Navbar from '../Navbar'
+import Header from '../Header/Header'
+import Navbar from '../Navbar/Navbar'
 import {format} from 'date-fns'
 import {DateRange} from 'react-date-range'
-import SearchItem from '../SearchItem'
+// import SearchItem from './SearchItem/SearchItem'npm
+import SearchItem from '../SearchItem/SearchItem'
 import useFetch from "../../hooks/useFetch"
-import Loader from '../Loader'
+import Loader from '../Loader/Loader'
+
+import "./list.scss"
 
 const List = () => {
   const location = useLocation();
