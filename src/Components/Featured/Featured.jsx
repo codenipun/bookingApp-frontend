@@ -26,7 +26,7 @@ const Featured = () => {
     const { data, loading} = useFetch(
         "https://bookingapp-backend.onrender.com/api/hotels/countByCity?cities=delhi,mumbai,goa,lonavla,agra"
       );
-    // console.log(data);
+    console.log(data);
     const handleSearch = (city) =>{
         dispatch({type:"NEW_SEARCH", payload:{destination:city, dates, options}});
         navigate("/hotels", {state:{destination:city, dates, options}})

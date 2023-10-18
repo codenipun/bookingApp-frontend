@@ -11,7 +11,9 @@
 .siImg{
     width: 200px;
     height: 200px;
-    object-fit: cover;
+    object-fit: contain;
+    // background: url("https://cf.bstatic.com/xdata/images/hotel/square600/227222651.webp?k=023401af568296a27b90896aa3591b48ac7f6ec4709cee078d473ec334ab2474&o=&s=1");
+    // background-size: auto;
 }
 
 .siDesc{

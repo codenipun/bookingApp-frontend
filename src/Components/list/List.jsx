@@ -4,7 +4,6 @@ import Header from '../Header/Header'
 import Navbar from '../Navbar/Navbar'
 import {format} from 'date-fns'
 import {DateRange} from 'react-date-range'
-// import SearchItem from './SearchItem/SearchItem'npm
 import SearchItem from '../SearchItem/SearchItem'
 import useFetch from "../../hooks/useFetch"
 import Loader from '../Loader/Loader'
@@ -75,19 +74,19 @@ const List = () => {
               Search Filters
             </div>) : (
               <div className='listSearch'>
-            <h1 className='lsTitle'>Search</h1>
-            <div className='lsItem'>
-              <label>Destination</label>
-              <input type="text" placeholder={destination} onChange={e=>setDestination(e.target.value)}/>
-            </div>
-            <div className='lsItem'>
-              <label>Check-in Date</label>
-              <span onClick={()=>{setOpenDate(!openDate)}}>{`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(dates[0].endDate, "MM/dd/yyyy")}`} </span>
+                <h1 className='lsTitle'>Search</h1>
+                <div className='lsItem'>
+                  <label>Destination</label>
+                  <input className='destination_input' type="text" placeholder={destination} onChange={e=>setDestination(e.target.value)}/>
+                </div>
+                <div className='lsItem'>
+                  <label>Check-in Date</label>
+                  <span onClick={()=>{setOpenDate(!openDate)}}>{`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(dates[0].endDate, "MM/dd/yyyy")}`} </span>
 
-              {openDate && <DateRange
-                onChange={(item)=>setDates([item.selection])}
-                minDate = {new Date()}
-                ranges={dates}
+                  {openDate && <DateRange
+                    onChange={(item)=>setDates([item.selection])}
+                    minDate = {new Date()}
+                    ranges={dates}
               />
               }
             </div>

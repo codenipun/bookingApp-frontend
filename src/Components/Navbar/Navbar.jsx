@@ -5,7 +5,7 @@ import "./navbar.scss"
 
 const Navbar = () => {
   const {user, dispatch} = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
   const navigate = useNavigate();
   const [openMenu, setOpenMenu] = useState(false);
   const handleLogin=()=>{
