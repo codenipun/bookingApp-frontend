@@ -3,7 +3,7 @@ import Home from './Components/Home/Home';
 // import Hotel from './Components/Hotel/Hotel';
 import List from './Components/list/List';
 import {userInputs} from "./Components/FormSource/FormSource"
-import Hotel from './Components/Hotel/Hotel';
+import Hotel from './Components/hotel/Hotel';
 import UserRegister from './Components/UserRegister/UserRegister';
 import Login from './Components/Login/Login';
 

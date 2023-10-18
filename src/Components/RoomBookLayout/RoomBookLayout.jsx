@@ -75,7 +75,7 @@ const RoomBookLayout = ({setOpen, hotelid}) => {
             onClick={() => setOpen(false)}
         />
         {
-          loading ? <Loader/> : 
+          loading ? <div style={{height:"200px"}}><Loader/></div> : 
           <div>
             <h2 className='heading'>Select your Rooms</h2>
             {data.length===0 ? <h1 className='noRoom'
