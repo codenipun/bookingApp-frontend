@@ -46,6 +46,11 @@
     font-weight:100;
 }
 
+.type-animation{
+    color: #febb02;
+    font-weight: 500;
+}
+
 .headerBtn{
     background-color: #0071c2;
     color: white;
@@ -147,6 +152,9 @@
 
 .headerTitle{
     font-size: 50px;
+}
+.headerBtn:hover{
+    box-shadow: 1px 1px 5px #fff;
 }
 
 @media (max-width: 450px) {

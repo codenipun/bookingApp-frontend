@@ -86,6 +86,12 @@
     text-decoration: none;
     color: gray;
 }
+.navButton{
+    // background-color: red;
+}
+.navButton:hover{
+    box-shadow: 0px 0px 5px #fff;
+}
 
 @media (max-width: 751px) {
     .logo{

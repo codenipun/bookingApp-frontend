@@ -2,8 +2,6 @@ import React from 'react'
 import './searchItem.scss'
 import {Link} from "react-router-dom"
 import "./searchItem.scss"
-import sampleImage from "../../Images/sample_image.webp"
-import axios from 'axios'
 
 
 const SearchItem = ({item}) => {

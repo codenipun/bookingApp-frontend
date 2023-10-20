@@ -6,6 +6,7 @@ import { SearchContext } from '../../context/SearchContext';
 import "./featured.scss"
 
 const Featured = () => {
+    console.log(`${process.env.REACT_APP_BACKEND_SERVER}`);
     const navigate = useNavigate()
     const {dispatch} = useContext(SearchContext)
 
@@ -24,7 +25,7 @@ const Featured = () => {
     };
 
     const { data, loading} = useFetch(
-        "https://bookingapp-backend.onrender.com/api/hotels/countByCity?cities=delhi,mumbai,goa,lonavla,agra"
+        `${process.env.REACT_APP_BACKEND_SERVER}/hotels/countByCity?cities=delhi,mumbai,goa,lonavla,agra`
       );
     // console.log(data);
     const handleSearch = (city) =>{

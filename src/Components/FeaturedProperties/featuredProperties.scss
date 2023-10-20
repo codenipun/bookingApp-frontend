@@ -19,6 +19,10 @@
   height: 250px;
   object-fit: cover;
   border-radius: 10px;
+  transition: all 0.3s;
+}
+.fpImg:hover{
+  transform: scale((1.05));
 }
 
 .fpName{

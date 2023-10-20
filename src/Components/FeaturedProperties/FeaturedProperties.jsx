@@ -6,7 +6,7 @@ import "./featuredProperties.scss"
 const FeaturedProperties = () => {
 
   const { data, loading } = useFetch(
-    "https://bookingapp-backend.onrender.com/api/hotels?featured=true&limit=4"
+    `${process.env.REACT_APP_BACKEND_SERVER}/hotels?featured=true&limit=4`
   );
 
   return (

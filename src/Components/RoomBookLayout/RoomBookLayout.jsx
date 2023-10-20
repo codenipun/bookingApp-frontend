@@ -11,7 +11,7 @@ import Loader from '../Loader/Loader'
 
 const RoomBookLayout = ({setOpen, hotelid}) => {
     const navigate = useNavigate();
-    const {data, error, loading} = useFetch(`https://bookingapp-backend.onrender.com/api/hotels/room/${hotelid}`);
+    const {data, loading} = useFetch(`https://bookingapp-backend.onrender.com/api/hotels/room/${hotelid}`);
     
     const [selectedRooms, setSelectedRooms] = useState([]);
     let sameDate = false;
@@ -66,7 +66,7 @@ const RoomBookLayout = ({setOpen, hotelid}) => {
         try {
           await Promise.all(
             selectedRooms.map((roomId) => {
-              const res = axios.put(`https://bookingapp-backend.onrender.com/api/rooms/availability/${roomId}`, {
+              const res = axios.put(`${process.env.REACT_APP_BACKEND_SERVER}/rooms/availability/${roomId}`, {
                 dates: allDates,
               });
               return res.data;

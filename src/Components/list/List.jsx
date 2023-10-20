@@ -16,7 +16,7 @@ const List = () => {
   const [destination, setDestination] = useState(location.state.destination);
   const [openDate, setOpenDate] = useState(false);
   const [dates, setDates] = useState(location.state.dates);
-  const [options, setOptions] = useState(location.state.options);
+  const options =location.state.options;
 
   const [minP, setMinP] = useState(undefined);
   const [maxP, setMaxP] = useState(undefined);
@@ -24,8 +24,8 @@ const List = () => {
   
 
   //custom hook to fetch data from backend
-  const { data, loading, error, reFetch } = useFetch(
-    `https://bookingapp-backend.onrender.com/api/hotels?city=${destination}&min=${minP || 0}&max=${maxP || 19999}` 
+  const { data, loading, reFetch } = useFetch(
+    `${process.env.REACT_APP_BACKEND_SERVER}/hotels?city=${destination}&min=${minP || 0}&max=${maxP || 19999}` 
   );
 
   const handleClick = () =>{

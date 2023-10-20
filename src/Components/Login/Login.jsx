@@ -15,7 +15,7 @@ const Login = () => {
         password : undefined
     });
     const navigate = useNavigate()
-    const {user, loading, error, dispatch} = useContext(AuthContext);
+    const {loading, error, dispatch} = useContext(AuthContext);
 
     const handleChange = async (e)=>{
         setCredential((prev)=>({...prev, [e.target.id] : e.target.value})); 
@@ -26,7 +26,7 @@ const Login = () => {
         
 
         try {
-            const res = await axios.post("https://bookingapp-backend.onrender.com/api/auth/login", credential);
+            const res = await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/auth/login`, credential);
             dispatch({type:"LOGIN_SUCCESS", payload : res.data.details });
             navigate("/");
         } catch (err) {

@@ -17,6 +17,11 @@
     height: 150px;
     object-fit: cover;
     border-radius: 10px;
+    transition: all 0.3s;
+}
+.pListImg:hover{
+    transform: scale3d(1.05, 1.05, 1.05);
+    // transform: scale(1.05);
 }
   
 .pListTitles>h1{

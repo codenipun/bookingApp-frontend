@@ -40,6 +40,9 @@
     border-radius: 8px;
     -webkit-border-radius: 8px;
 }
+.linput:focus{
+  outline: none;
+}
 .line{
   border: 0.1px solid rgb(238, 238, 238);
   text-decoration: none;

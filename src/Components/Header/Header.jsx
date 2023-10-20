@@ -5,6 +5,7 @@ import Searchbar from '../Searchbar'
 import { AuthContext } from '../../context/AuthContext'
 import { Link } from 'react-router-dom'
 import "./header.scss"
+import { TypeAnimation } from 'react-type-animation';
 
 const Header = ({type}) => {
     const {user} = useContext(AuthContext);
@@ -39,9 +40,23 @@ const Header = ({type}) => {
                 <>
                 <h1 className='headerTitle'>Find your next stay</h1>
                 
-                <p className='headerDesc'>Search low prices on hotels, homes and much more...</p>
-                
-                {!user && <Link to={"/login"}><button className=' headerBtn signbtn'>Sign in / Register</button></Link>}
+                <p className='headerDesc'>Search low prices on <TypeAnimation className='type-animation' sequence={[
+                                                                            "Hotels.",
+                                                                            1000,
+                                                                            "Homes.",
+                                                                            1000,
+                                                                            "Apartments.",
+                                                                            1000,
+                                                                            "Resorts.",
+                                                                            1000,
+                                                                            "Villas.",
+                                                                            1000,
+                                                                            "Cabins.",
+                                                                            1000
+                                                                            ]}
+                                                                            speed={50}
+                                                                            repeat={Infinity}/></p>
+                {!user && <Link to={"/login"}><button className='headerBtn signbtn'>Sign in / Register</button></Link>}
             </>
         }
         </div>
