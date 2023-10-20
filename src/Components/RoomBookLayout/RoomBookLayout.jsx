@@ -14,6 +14,7 @@ const RoomBookLayout = ({setOpen, hotelid}) => {
     const {data, error, loading} = useFetch(`https://bookingapp-backend.onrender.com/api/hotels/room/${hotelid}`);
     
     const [selectedRooms, setSelectedRooms] = useState([]);
+    let sameDate = false;
     
     const handleSelect = (e) =>{
         const checked = e.target.checked;
@@ -24,10 +25,17 @@ const RoomBookLayout = ({setOpen, hotelid}) => {
     // console.log(selectedRooms);
     
     const {dates} = useContext(SearchContext);
+    // console.log(dates[0].startDate===dates[0].endDate)
 
     const getDateInRange = (startDate, endDate) =>{
         const start = new Date(startDate)
         const end = new Date(endDate)
+
+        // console.log(start.getTime())
+        // console.log(end.getTime())
+        if(start.getTime()===end.getTime()){
+          sameDate = true;
+        }
 
         const date = new Date(start.getTime());
 
@@ -48,24 +56,29 @@ const RoomBookLayout = ({setOpen, hotelid}) => {
 
     return !isFound;
   };
+  // console.log(allDates)
     
 
     const handleClick = async()=>{
+      if(sameDate){
+        message.warning('Please Select Dates for your Trip !!');
+      }else{
         try {
-      await Promise.all(
-        selectedRooms.map((roomId) => {
-          const res = axios.put(`https://bookingapp-backend.onrender.com/api/rooms/availability/${roomId}`, {
-            dates: allDates,
-          });
-          return res.data;
-        })
-      );
-      message.success('Booking Successful');
-      setOpen(false);
-      navigate("/");
-    } catch (err) {}
+          await Promise.all(
+            selectedRooms.map((roomId) => {
+              const res = axios.put(`https://bookingapp-backend.onrender.com/api/rooms/availability/${roomId}`, {
+                dates: allDates,
+              });
+              return res.data;
+            })
+          );
+          message.success('Booking Successful');
+          setOpen(false);
+          navigate("/");
+        } catch (err) {}
+      }
     }
-    console.log(data)
+    // console.log(data)
   return (
     <div className='reserve'>
       <div className='rContainer'>
