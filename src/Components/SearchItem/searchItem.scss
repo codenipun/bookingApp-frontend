@@ -7,6 +7,9 @@
     gap: 20px;
     margin-bottom: 20px;
 }
+.searchItem:hover{
+    background-color: rgb(245, 245, 245);
+}
 
 .siImg{
     width: 200px;
@@ -26,6 +29,8 @@
 .siTitle{
     font-size: 20px;
     color: #0071c2;
+    text-decoration: none;
+    border: none;
 }
 .siDistance {
     font-size: 12px;

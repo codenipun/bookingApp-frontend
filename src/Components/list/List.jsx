@@ -122,10 +122,10 @@ const List = () => {
           <div className='listResult'>
               {loading ? <Loader/> : 
                 <>
-                  {
-                    data.map((item)=>(
-                      <SearchItem key={item._id} item = {item} />
-                    ))
+                  { data.length===0 ? <h3 style={{color : "red"}}>Sorry, No Hotels for Now at this Price Range !!</h3> :
+                      data.map((item)=>(
+                        <SearchItem key={item._id} item = {item} />
+                      ))
                   }
                 </>
               }
