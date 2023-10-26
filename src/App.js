@@ -1,28 +1,15 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import Home from './Components/Home/Home';
+
 // import Hotel from './Components/Hotel/Hotel';
-import List from './Components/list/List';
 import {userInputs} from "./Components/FormSource/FormSource"
-import Hotel from './Components/hotel/Hotel';
-import UserRegister from './Components/UserRegister/UserRegister';
-import Login from './Components/Login/Login';
+import Hotel from './pages/hotel/Hotel';
+import UserRegister from './pages/UserRegister/UserRegister';
+import Login from './pages/Login/Login';
+import Home from "./pages/Home/Home";
+import List from "./pages/list/List"
 
 import './app.scss'
-// import './styles/home.scss'
-// import './styles/header.scss'
-// import './styles/featured.scss'
-// import './styles/navbar.scss'
-// import './styles/propertylist.scss'
-// import './styles/featuredProperties.scss'
-// import './styles/maillist.scss'
-// import './styles/footer.scss'
-// import './styles/list.scss'
-// import './styles/hotel.scss'
-// import './styles/login.scss'
-// import './styles/userRegister.scss'
-// import './styles/roomBookLayout.scss'
-// import './styles/loader.scss'
-// import "./Components/Hotel/hotel.scss"
+import Bookings from './Components/Bookings/Bookings';
 
 function App() {
   return (
@@ -33,9 +20,19 @@ function App() {
         <Route path='/hotels/:id' element={<Hotel/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<UserRegister inputs={userInputs}/>}/>
+        <Route path='/bookings' element={<Bookings/>}/>
       </Routes>
     </BrowserRouter>
   );
 }
 
 export default App;
+
+
+
+
+/*
+Booking wala components ready hai
+kuch data nhi mil rha h
+samaj nhi aa rha ki payload kese bheje on click
+*/

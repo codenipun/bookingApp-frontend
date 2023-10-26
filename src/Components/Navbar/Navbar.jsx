@@ -20,6 +20,9 @@ const Navbar = () => {
     dispatch({type :"LOGOUT"});
     navigate("/");
   }
+  // const handleBookings = () =>{
+  //   navigate("/bookings");
+  // }
 
   return (
     <div className='navbar'>
@@ -45,7 +48,9 @@ const Navbar = () => {
                   {user.username === "codenipun" && 
                     <div className="menuItem "><a className='adminlink' href='https://booking-app-admin.onrender.com/'>ADMIN</a></div>
                   }
-                  <Link className='menuLink'>
+                  <Link 
+                  // to={"/bookings"} 
+                  className='menuLink'>
                     <div className="menuItem">Bookings</div>
                   </Link>
                   <Link onClick={handleLogout} className='menuLink'>

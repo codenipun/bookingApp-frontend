@@ -11,7 +11,7 @@ import Loader from '../Loader/Loader'
 
 const RoomBookLayout = ({setOpen, hotelid}) => {
     const navigate = useNavigate();
-    const {data, loading} = useFetch(`https://bookingapp-backend.onrender.com/api/hotels/room/${hotelid}`);
+    const {data, loading} = useFetch(`${process.env.REACT_APP_BACKEND_SERVER}/hotels/room/${hotelid}`);
     
     const [selectedRooms, setSelectedRooms] = useState([]);
     let sameDate = false;

@@ -1,21 +1,23 @@
-import React from 'react'
 import useFetch from '../../hooks/useFetch';
 import Loader from '../Loader/Loader';
 import "./featuredProperties.scss"
+import { useNavigate } from 'react-router-dom';
 
 const FeaturedProperties = () => {
-
+  const navigate = useNavigate();
   const { data, loading } = useFetch(
     `${process.env.REACT_APP_BACKEND_SERVER}/hotels?featured=true&limit=4`
   );
-
+    const handleClick=(id)=>{
+      navigate(`/hotels/${id}`);
+    }
   return (
     <div className="fp">
     {loading ? <Loader/> :
       (<>
         {
           data.map((item, i)=>(
-            <div className="fpItem" key={i}>
+            <div className="fpItem" key={i} onClick={()=>handleClick(item._id)}>
               <img
                 src={data[i].images[0]}
                 alt=""

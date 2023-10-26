@@ -1,8 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../Navbar/Navbar";
-import Footer from "../Footer/Footer";
+import Navbar from "../../Components/Navbar/Navbar";
+import Footer from "../../Components/Footer/Footer";
 import "./userRegister.scss"
 
 const UserRegister = ({ inputs, title }) => {
@@ -20,7 +20,7 @@ const UserRegister = ({ inputs, title }) => {
         ...info,
       };
 
-      await axios.post("https://bookingapp-backend.onrender.com/api/auth/register", newUser);
+      await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/auth/register`, newUser);
       navigate("/login")
     } catch (err) {
       console.log(err);

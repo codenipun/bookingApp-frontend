@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react'
-import Footer from '../Footer/Footer'
-import Header from '../Header/Header'
-import MailList from '../MailList/MailList'
-import Navbar from '../Navbar/Navbar'
+import Footer from '../../Components/Footer/Footer'
+import Header from '../../Components/Header/Header'
+import MailList from '../../Components/MailList/MailList'
+import Navbar from '../../Components/Navbar/Navbar'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {
   faCircleArrowLeft,
@@ -14,8 +14,8 @@ import useFetch from "../../hooks/useFetch"
 import { useLocation, useNavigate } from 'react-router-dom'
 import { SearchContext } from '../../context/SearchContext'
 import { AuthContext } from '../../context/AuthContext'
-import RoomBookLayout from '../RoomBookLayout/RoomBookLayout'
-import Loader from '../Loader/Loader'
+import RoomBookLayout from '../../Components/RoomBookLayout/RoomBookLayout'
+import Loader from '../../Components/Loader/Loader'
 import "./hotel.scss"
 // import "../Hotel/hotel.scss"
 
