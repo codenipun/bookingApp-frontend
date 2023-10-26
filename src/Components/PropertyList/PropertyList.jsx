@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import useFetch from '../../hooks/useFetch';
 import Loader from '../Loader/Loader';
 import "./propertylist.scss"

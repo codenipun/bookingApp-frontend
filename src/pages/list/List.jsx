@@ -29,7 +29,7 @@ const List = () => {
   const { data, loading, reFetch } = useFetch(
     `${process.env.REACT_APP_BACKEND_SERVER}/hotels?city=${destination}&min=${minP || 0}&max=${maxP || 19999}` 
   );
-  const { data : typeData, loading : typeLoading, reFetch : typeReFetch } = useFetch(
+  const { data : typeData, reFetch : typeReFetch } = useFetch(
     `${process.env.REACT_APP_BACKEND_SERVER}/hotels/getByType?type=${location.state.type}&min=${minP || 0}&max=${maxP || 19999}` 
   );
 

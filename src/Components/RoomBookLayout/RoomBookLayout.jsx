@@ -8,8 +8,17 @@ import { useNavigate } from 'react-router-dom'
 import { message } from 'antd';
 import "./roomBookLayout.scss";
 import Loader from '../Loader/Loader'
+import { AuthContext } from '../../context/AuthContext'
 
-const RoomBookLayout = ({setOpen, hotelid}) => {
+const RoomBookLayout = ({setOpen, hotelid, hotelName, hotelImg, checkin, checkout, price}) => {
+  const {user} = useContext(AuthContext);
+  const bookingDate = new Date();
+  // console.log(bookingDate);
+  // console.log(checkin);
+  // console.log(checkout);
+
+  const [roomId, setRoomId] = useState("")
+  const userId = user._id;
     const navigate = useNavigate();
     const {data, loading} = useFetch(`${process.env.REACT_APP_BACKEND_SERVER}/hotels/room/${hotelid}`);
     
@@ -19,6 +28,8 @@ const RoomBookLayout = ({setOpen, hotelid}) => {
     const handleSelect = (e) =>{
         const checked = e.target.checked;
         const value = e.target.value;
+
+        setRoomId(value)
 
         setSelectedRooms(checked ? [...selectedRooms, value] : selectedRooms.filter((item)=>item!==value));
     }
@@ -57,9 +68,22 @@ const RoomBookLayout = ({setOpen, hotelid}) => {
     return !isFound;
   };
   // console.log(allDates)
+  // console.log(data);
     
 
     const handleClick = async()=>{
+      try {
+        await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/rooms/${userId}/${hotelid}/${roomId}`, {
+          hotelName : hotelName,
+          hotelImg : hotelImg,
+          bookingDate : bookingDate ,
+          checkin : checkin,
+          checkout : checkout, 
+          price : price 
+        });
+      } catch (error) {
+        
+      }
       if(sameDate){
         message.warning('Please Select Dates for your Trip !!');
       }else{

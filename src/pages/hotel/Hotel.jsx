@@ -54,7 +54,7 @@ const Hotel = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
 
-  const { data, loading } = useFetch( `${process.env.REACT_APP_BACKEND_SERVER}/hotels/find/${id}` );
+  const {data, loading } = useFetch( `${process.env.REACT_APP_BACKEND_SERVER}/hotels/find/${id}` );
   
   const {dates, options} = useContext(SearchContext)
 
@@ -67,7 +67,7 @@ const Hotel = () => {
   }
 
   // console.log(dates[0].startDate);
-  // console.log(dates[0].endDate);
+  // console.log(data.images[0]);
   const days  = dayDifference(dates[0].startDate, dates[0].endDate);
 
   const handleMove = (direction) =>{
@@ -144,8 +144,7 @@ const Hotel = () => {
           <MailList/>
           <Footer/>
         </div>}
-        {openBookLayout && <RoomBookLayout setOpen = {setOpenBookLayout} hotelid = {id}
-        />}
+        {openBookLayout && <RoomBookLayout setOpen = {setOpenBookLayout} hotelid = {id} hotelName = {data.name} hotelImg = {data.images[0]} checkin = {dates[0].startDate} checkout = {dates[0].endDate} price={data.cheapestPrice}/>}
     </div>
   )
 }
