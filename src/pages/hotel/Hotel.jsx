@@ -56,8 +56,10 @@ const Hotel = () => {
 
   const {data, loading } = useFetch( `${process.env.REACT_APP_BACKEND_SERVER}/hotels/find/${id}` );
   
-  const {dates, options} = useContext(SearchContext)
+  let {dates, options} = useContext(SearchContext)
+  // console.log(dates);
 
+  if(dates.length===0) dates = [{startDate : new Date(), endDate : new Date(), key:'selection'}];
 
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
@@ -66,7 +68,6 @@ const Hotel = () => {
     return diffDays;
   }
 
-  // console.log(dates[0].startDate);
   // console.log(data.images[0]);
   const days  = dayDifference(dates[0].startDate, dates[0].endDate);
 

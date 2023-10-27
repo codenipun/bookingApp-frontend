@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import Navbar from '../../Components/Navbar/Navbar'
-import Footer from '../../Components/Footer/Footer'
 import "./bookings.scss"
 import useFetch from '../../hooks/useFetch'
 import { AuthContext } from '../../context/AuthContext'
@@ -11,7 +10,7 @@ const Bookings = () => {
     const {user} = useContext(AuthContext);
     const userId = user._id
     // console.log(user)
-    const {data} = useFetch(`${process.env.REACT_APP_BACKEND_SERVER}/users/${userId}`);
+    const {data, loading} = useFetch(`${process.env.REACT_APP_BACKEND_SERVER}/users/${userId}`);
     
     const bookings = data.bookings;
     // console.log(data);
@@ -22,7 +21,7 @@ const Bookings = () => {
         <Navbar/>
         <div className='main-cont'>
             {
-                bookings ?  bookings.map((item, i)=>(
+                loading ? <Loader/> : bookings ? bookings.map((item, i)=>(
                     <div className='booking-cont' key={i}>
                         <div className='sub-container-1'>
                             <img src={item.hotelImg} alt='hotelImg'/>
@@ -39,7 +38,7 @@ const Bookings = () => {
                             <p>{item.price}{" "}₹</p>
                         </div>
                     </div>
-                )) : <Loader/>
+                )) : <>No Bookings For Now</>
             }
         </div>
         

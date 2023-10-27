@@ -2,8 +2,15 @@ import React, { useContext, useState } from 'react'
 import {Link, useNavigate} from "react-router-dom"
 import { AuthContext } from '../../context/AuthContext'
 import "./navbar.scss"
+import useFetch from '../../hooks/useFetch'
 
 const Navbar = () => {
+  const {user:currUser} = useContext(AuthContext);
+  const userId = currUser._id
+  const {data, loading} = useFetch(`${process.env.REACT_APP_BACKEND_SERVER}/users/${userId}`);
+    
+  const bookings = data.bookings;
+
   const {user, dispatch} = useContext(AuthContext);
   // console.log(user);
   const navigate = useNavigate();
@@ -25,17 +32,23 @@ const Navbar = () => {
     <div className='navbar'>
       <div>
         <Link to={"/"} style={{textDecoration:"none", color:"white"}}>
-          <div className='logo'>
+        <div className='logo'>
               Hotel Booking
           </div>
         </Link>
-       {user ? <div onClick={()=>setOpenMenu(!openMenu)} >
+       <div className='logo-booking'>
+       {bookings ? <Link className='totalBookings' style={{textDecoration:"none", color:"white"}} to={"/bookings"}>Bookings</Link>
+        : <></>}
+        {user ? <div onClick={()=>setOpenMenu(!openMenu)} >
+
+        
        <img className='userimg' src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png" alt=""/>
        
        </div> : ( <div className='navItems'>
             <button onClick={handleRegister} className='navButton'>Register</button>
             <button onClick={handleLogin} className='navButton'>Login</button>
         </div>)}
+       </div>
 
         {openMenu &&
                 <div className='menu'>
