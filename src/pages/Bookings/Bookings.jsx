@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
-import Navbar from '../Navbar/Navbar'
-import Footer from '../Footer/Footer'
+import Navbar from '../../Components/Navbar/Navbar'
+import Footer from '../../Components/Footer/Footer'
 import "./bookings.scss"
 import useFetch from '../../hooks/useFetch'
 import { AuthContext } from '../../context/AuthContext'
-import Loader from '../Loader/Loader'
+import Loader from '../../Components/Loader/Loader'
 
 
 const Bookings = () => {
@@ -25,23 +25,24 @@ const Bookings = () => {
                 bookings ?  bookings.map((item, i)=>(
                     <div className='booking-cont' key={i}>
                         <div className='sub-container-1'>
-                            <img width={140} height={140} src={item.hotelImg} alt='hotelImg'/>
+                            <img src={item.hotelImg} alt='hotelImg'/>
                             <div className='sub-container-11'>
                                 <h2>{item.hotelName}</h2>
                                 <p>Booked</p>
                                 <span>Check-In : {item.checkin}</span>
                                 <span>Check-Out : {item.checkout}</span>
+                                <span className='b-date'>Booking Date : {item.bookingDate}</span>
                             </div>
                         </div>
                         <div className='sub-container-2'>
                             <span>Booking Date : {item.bookingDate}</span>
-                            <p>{item.price} ₹</p>
+                            <p>{item.price}{" "}₹</p>
                         </div>
                     </div>
                 )) : <Loader/>
             }
-            <Footer/>
         </div>
+        
         <div style={{}}></div>
     </>
   )

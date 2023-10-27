@@ -9,7 +9,7 @@ import Home from "./pages/Home/Home";
 import List from "./pages/list/List"
 
 import './app.scss'
-import Bookings from './Components/Bookings/Bookings';
+import Bookings from './pages/Bookings/Bookings';
 
 function App() {
   return (

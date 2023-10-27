@@ -7,6 +7,7 @@
     // width: 100%;
     // background-color: red;
     gap: 20px;
+    min-height : 80vh
 }
 .booking-cont{
     width: 900px;
@@ -21,6 +22,10 @@
 }
 .sub-container-1{
     display: flex;
+    >img{
+        width: 140px;
+        height: 140px;
+    }
 }
 .sub-container-11{
     display: flex;
@@ -29,6 +34,7 @@
     align-items:self-start;
     // background-color: red;
 
+    
     >h2, span, p{
         margin: 0px 10px;
         text-align: center;
@@ -44,6 +50,9 @@
         border: 1px solid green;
         padding: 3px;
         border-radius: 4px;
+    }
+    >.b-date{
+        display: none;
     }
 }
 
@@ -62,5 +71,54 @@
     >p{
         font-size: large;
         text-align: end;
+    }
+}
+
+@media (max-width : 751px){
+    .main-cont{
+        width: 350px;
+        // background-color: red;
+    }
+    .booking-cont{
+        width: 90%;
+        height: 100px;
+        // background-color: red;
+    }
+    
+    .sub-container-1{
+        >img{
+            width: 80px;
+            height: 100px;
+        }
+    }
+    .sub-container-11{
+        >h2{
+            font-size: 12px;
+            text-align: start;
+        }
+        >span{
+            font-size: 10px;
+        }
+        >p{
+            font-size: 10px;
+        }
+
+        >.b-date{
+            display: block;
+        }
+
+    }
+
+    .sub-container-2{
+        >span{
+            font-size: 10px;
+            display: none;
+        }
+        >p{
+            font-size: 12px;
+            // background-color: red;
+            display: inline;
+            width: 38px;
+        }
     }
 }

@@ -12,7 +12,7 @@ import { AuthContext } from '../../context/AuthContext'
 
 const RoomBookLayout = ({setOpen, hotelid, hotelName, hotelImg, checkin, checkout, price}) => {
   const {user} = useContext(AuthContext);
-  const bookingDate = new Date();
+  const bookingDate = new Date().toLocaleDateString("en-GB");
   // console.log(bookingDate);
   // console.log(checkin);
   // console.log(checkout);
