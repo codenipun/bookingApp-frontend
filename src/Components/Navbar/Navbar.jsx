@@ -5,14 +5,18 @@ import "./navbar.scss"
 import useFetch from '../../hooks/useFetch'
 
 const Navbar = () => {
-  const {user:currUser} = useContext(AuthContext);
-  const userId = currUser._id
-  const {data, loading} = useFetch(`${process.env.REACT_APP_BACKEND_SERVER}/users/${userId}`);
-    
+  // const {user:currUser} = useContext(AuthContext);
+  const {user, dispatch} = useContext(AuthContext);
+  let userId = null;
+  if(user){
+    userId = user._id;
+  }
+  // console.log(user)
+  const {data, loading, reFetch} = useFetch(`${process.env.REACT_APP_BACKEND_SERVER}/users/${userId}`);
+
   const bookings = data.bookings;
 
-  const {user, dispatch} = useContext(AuthContext);
-  // console.log(user);
+  // console.log(data);
   const navigate = useNavigate();
   const [openMenu, setOpenMenu] = useState(false);
   const handleLogin=()=>{
@@ -23,8 +27,10 @@ const Navbar = () => {
   }
 
   const handleLogout = () =>{
+    reFetch();
     setOpenMenu(!openMenu);
     dispatch({type :"LOGOUT"});
+    // window.onload();    
     navigate("/");
   }
 
@@ -37,17 +43,17 @@ const Navbar = () => {
           </div>
         </Link>
        <div className='logo-booking'>
-       {bookings ? <Link className='totalBookings' style={{textDecoration:"none", color:"white"}} to={"/bookings"}>Bookings</Link>
-        : <></>}
-        {user ? <div onClick={()=>setOpenMenu(!openMenu)} >
+          {user && bookings ?<Link className='totalBookings' style={{textDecoration:"none", color:"white"}} to={"/bookings"}>Bookings</Link>
+            : <></>}
+            {user ? <div onClick={()=>setOpenMenu(!openMenu)} >
 
-        
-       <img className='userimg' src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png" alt=""/>
-       
-       </div> : ( <div className='navItems'>
-            <button onClick={handleRegister} className='navButton'>Register</button>
-            <button onClick={handleLogin} className='navButton'>Login</button>
-        </div>)}
+            
+          <img className='userimg' src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png" alt=""/>
+          
+          </div> : ( <div className='navItems'>
+                <button onClick={handleRegister} className='navButton'>Register</button>
+                <button onClick={handleLogin} className='navButton'>Login</button>
+            </div>)}
        </div>
 
         {openMenu &&

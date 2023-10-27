@@ -104,6 +104,14 @@
         cursor: pointer;
     }
 }
+.navItems{
+    // margin: 10px;
+    >button{
+        padding: 5px 10px;
+        margin: 5px 10px;
+        cursor: pointer;
+    }
+}
 
 @media (max-width: 751px) {
     .logo{
