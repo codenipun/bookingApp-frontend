@@ -57,10 +57,11 @@ const Hotel = () => {
   const {data, loading } = useFetch( `${process.env.REACT_APP_BACKEND_SERVER}/hotels/find/${id}` );
   
   let {dates, options} = useContext(SearchContext)
-  console.log(dates);
-
+  // console.log(options.room===undefined)
+  
   if(dates.length===0) dates = [{startDate : new Date(), endDate : new Date(), key:'selection'}];
-  console.log(dates);
+  // console.log(dates);
+  // console.log(typeof dates[0].startDate.toLocaleDateString('en-GB'));
   
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
@@ -71,6 +72,7 @@ const Hotel = () => {
 
   // console.log(data.images[0]);
   const days  = dayDifference(dates[0].startDate, dates[0].endDate);
+  // console.log(days)
 
   const handleMove = (direction) =>{
     let newSlideNumber;
@@ -138,7 +140,7 @@ const Hotel = () => {
                 <h1>Perfect for a {days}-night stay</h1>
                 <span>Located in the real heart of krakov, this property has an
                 excellent location score of 9.8!</span>
-                <h2><b>₹{days * data.cheapestPrice * options.rooms}</b>({days} nights)</h2>
+                <h2><b>₹{days * data.cheapestPrice * (options.rooms===undefined ? 0 : options.rooms)}</b>({days} nights)</h2>
                 <button onClick={handleBook}>Reserve or Book Now!</button>
               </div>
             </div>

@@ -35,7 +35,10 @@ const RoomBookLayout = ({setOpen, hotelid, hotelName, hotelImg, checkin, checkou
     }
     // console.log(selectedRooms);
     
-    const {dates} = useContext(SearchContext);
+    let {dates} = useContext(SearchContext);
+    // console.log(dates[0].startDate===dates[0].endDate)
+
+    if(dates.length===0) dates = [{startDate : new Date(), endDate : new Date(), key:'selection'}];
     // console.log(dates[0].startDate===dates[0].endDate)
 
     const getDateInRange = (startDate, endDate) =>{
@@ -128,7 +131,7 @@ const RoomBookLayout = ({setOpen, hotelid, hotelName, hotelImg, checkin, checkou
                       </div>
                       <div className="rSelectRooms">
                         {item.roomNumbers.map((roomNumber) => (
-                          <div className="room">
+                          <div className="room" key={roomNumber._id}>
                             <label>{roomNumber.number}</label>
                             <input
                               className='checkbox'
