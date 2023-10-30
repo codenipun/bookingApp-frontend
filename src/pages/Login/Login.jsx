@@ -7,6 +7,7 @@ import Loader from '../../Components/Loader/Loader';
 import Navbar from '../../Components/Navbar/Navbar';
 import loginImg from '../../Images/login-illustration.png'
 import "./login.scss"
+import {message} from 'antd'
 
 const Login = () => {
     
@@ -32,6 +33,8 @@ const Login = () => {
         } catch (err) {
             dispatch({type : "LOGIN_FAILURE", payload : err.response.data});
         }
+        
+        message.success('Successfully Loged In')
     }
 
     const handleRegisterClick = () =>{

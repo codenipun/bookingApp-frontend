@@ -5,7 +5,6 @@ import useFetch from '../../hooks/useFetch'
 import { AuthContext } from '../../context/AuthContext'
 import Loader from '../../Components/Loader/Loader'
 
-
 const Bookings = () => {
     const {user} = useContext(AuthContext);
     const userId = user._id

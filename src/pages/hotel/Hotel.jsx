@@ -17,8 +17,6 @@ import { AuthContext } from '../../context/AuthContext'
 import RoomBookLayout from '../../Components/RoomBookLayout/RoomBookLayout'
 import Loader from '../../Components/Loader/Loader'
 import "./hotel.scss"
-// import "../Hotel/hotel.scss"
-
 
 const Hotel = () => {
   const photos = [

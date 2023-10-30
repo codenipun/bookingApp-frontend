@@ -3,6 +3,7 @@ import {Link, useNavigate} from "react-router-dom"
 import { AuthContext } from '../../context/AuthContext'
 import "./navbar.scss"
 import useFetch from '../../hooks/useFetch'
+import { message } from 'antd';
 
 const Navbar = () => {
   // const {user:currUser} = useContext(AuthContext);
@@ -35,6 +36,7 @@ const Navbar = () => {
     dispatch({type :"LOGOUT"});
     // window.onload();    
     navigate("/");
+    message.success('Successfully Loged Out')
   }
 
   return (
@@ -60,26 +62,26 @@ const Navbar = () => {
        </div>
 
         {openMenu &&
-                <div className='menu'>
-                  <Link className='menuLink'>
-                    <div className="menuItem">{user.username}</div>
-                  </Link>
-                  {user.username === "codenipun" && 
-                    <div className="menuItem "><a className='adminlink' href='https://booking-app-admin.onrender.com/'>ADMIN</a></div>
-                  }
-                  <Link 
-                  to={"/bookings"} 
-                  className='menuLink'>
-                    <div className="menuItem">Bookings</div>
-                  </Link>
-                  <Link onClick={handleLogout} className='menuLink'>
-                    <div className="menuItem">Logout</div>
-                  </Link>
-                  <Link className='menuLink'>
-                    <div  className="menuItem">Settings</div>
-                  </Link>
-                </div>
-            }         
+            <div className='menu'>
+              <Link className='menuLink'>
+                <div className="menuItem">{user.username}</div>
+              </Link>
+              {user.username === "codenipun" && 
+                <div className="menuItem "><a className='adminlink' href='https://booking-app-admin.onrender.com/'>ADMIN</a></div>
+              }
+              <Link 
+              to={"/bookings"} 
+              className='menuLink'>
+                <div className="menuItem">Bookings</div>
+              </Link>
+              <Link onClick={handleLogout} className='menuLink'>
+                <div className="menuItem">Logout</div>
+              </Link>
+              <Link className='menuLink'>
+                <div  className="menuItem">Settings</div>
+              </Link>
+            </div>
+        }         
       </div>
     </div>
   )

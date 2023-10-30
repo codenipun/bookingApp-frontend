@@ -86,9 +86,6 @@
     text-decoration: none;
     color: gray;
 }
-.navButton{
-    // background-color: red;
-}
 .navButton:hover{
     box-shadow: 0px 0px 5px #fff;
 }
@@ -119,7 +116,6 @@
     }
     .navbar{
         >div{
-            max-width: 725px;
             >div{
                 >button{
                     margin: 11px;

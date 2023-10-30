@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/Footer/Footer";
 import "./userRegister.scss"
+import {message} from 'antd'
 
 const UserRegister = ({ inputs, title }) => {
   const navigate = useNavigate();
@@ -21,7 +22,9 @@ const UserRegister = ({ inputs, title }) => {
       };
 
       await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/auth/register`, newUser);
+      // navigate("/");
       navigate("/login")
+      message.success("Successfully Registered, Please Login to explore")
     } catch (err) {
       console.log(err);
     }

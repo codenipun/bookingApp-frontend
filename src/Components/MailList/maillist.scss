@@ -7,7 +7,7 @@
   justify-content: center;
 
   >div{
-    width: 100%;
+    // width: 100%;
     max-width: 1024px;
     display: flex;
     flex-direction: column;
@@ -41,7 +41,12 @@
     padding: 10px;
 }
 
-@media (max-width:450px) {
+@media (max-width:751px) {
+  .mail{
+    >div{
+      padding: 50px 28px;
+    }
+  }
     .mailTitle{
       font-size: 20px;
     }
