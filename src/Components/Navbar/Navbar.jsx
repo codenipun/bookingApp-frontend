@@ -14,9 +14,12 @@ const Navbar = () => {
   // console.log(user)
   const {data, loading, reFetch} = useFetch(`${process.env.REACT_APP_BACKEND_SERVER}/users/${userId}`);
 
-  const bookings = data.bookings;
+  let bookings = [];
 
-  // console.log(data);
+  bookings = data.bookings;
+  // console.log(bookings); 
+
+  
   const navigate = useNavigate();
   const [openMenu, setOpenMenu] = useState(false);
   const handleLogin=()=>{
@@ -43,7 +46,7 @@ const Navbar = () => {
           </div>
         </Link>
        <div className='logo-booking'>
-          {user && bookings ?<Link className='totalBookings' style={{textDecoration:"none", color:"white"}} to={"/bookings"}>Bookings</Link>
+          {(user && bookings!==undefined && bookings.length!==0) ? <Link className='totalBookings' style={{textDecoration:"none", color:"white"}} to={"/bookings"}>Bookings</Link>
             : <></>}
             {user ? <div onClick={()=>setOpenMenu(!openMenu)} >
 

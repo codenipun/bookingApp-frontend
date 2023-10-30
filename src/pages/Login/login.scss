@@ -2,9 +2,10 @@
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  // justify-content: center;
   margin-top: 50px;
   flex-direction: column;
+  // background-color: red;
 }
 
 .lContainer {
@@ -101,16 +102,22 @@
   text-align: center;
   color: #777585;
   font-size: 14px;
+  align-items: center;
+  justify-content: center;
   word-wrap: break-word;
   line-height: 24px;
+  // background-color: red;
+  height: 100%;
 
 }
 .login_subContainer1{
+  // background-color: red;
   display: flex;
   flex-direction: row;
   gap: 100px;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content:flex-start
+  // height: 100vh;
 }
 
 @media (max-width : 450px) {

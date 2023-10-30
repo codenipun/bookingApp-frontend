@@ -57,10 +57,11 @@ const Hotel = () => {
   const {data, loading } = useFetch( `${process.env.REACT_APP_BACKEND_SERVER}/hotels/find/${id}` );
   
   let {dates, options} = useContext(SearchContext)
-  // console.log(dates);
+  console.log(dates);
 
   if(dates.length===0) dates = [{startDate : new Date(), endDate : new Date(), key:'selection'}];
-
+  console.log(dates);
+  
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
     const timeDiff = Math.abs(date2.getTime() - date1.getTime());
@@ -121,7 +122,7 @@ const Hotel = () => {
             <div className="hotelImages">
               {
                 photos.map((photo, i)=>(
-                  <div className="hotelImgWrapper">
+                  <div key={i} className="hotelImgWrapper">
                     <img onClick={()=>handleOpen(i)} src={photo.src} alt="" className='hotelImg' />
                   </div>
                 ))

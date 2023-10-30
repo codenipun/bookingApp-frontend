@@ -13,7 +13,7 @@ const Bookings = () => {
     const {data, loading} = useFetch(`${process.env.REACT_APP_BACKEND_SERVER}/users/${userId}`);
     
     const bookings = data.bookings;
-    // console.log(data);
+    // console.log(bookings);
 
     
     return (
@@ -21,7 +21,7 @@ const Bookings = () => {
         <Navbar/>
         <div className='main-cont'>
             {
-                loading ? <Loader/> : bookings ? bookings.map((item, i)=>(
+                loading ? <Loader/> : (bookings!==undefined && bookings.length!==0)? bookings.map((item, i)=>(
                     <div className='booking-cont' key={i}>
                         <div className='sub-container-1'>
                             <img src={item.hotelImg} alt='hotelImg'/>
@@ -38,7 +38,7 @@ const Bookings = () => {
                             <p>{item.price}{" "}₹</p>
                         </div>
                     </div>
-                )) : <>No Bookings For Now</>
+                )) : <>No Bookings For Now !!</>
             }
         </div>
         
