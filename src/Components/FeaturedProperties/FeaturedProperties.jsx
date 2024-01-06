@@ -16,19 +16,19 @@ const FeaturedProperties = () => {
     {loading ? <Loader/> :
       (<>
         {
-          data.map((item, i)=>(
+          data?.map((item, i)=>(
             <div className="fpItem" key={i} onClick={()=>handleClick(item._id)}>
               <img
-                src={data[i].images[0]}
+                src={data[i]?.images[0]}
                 alt=""
                 className="fpImg"
               />
-              <span className="fpName">{data[i].name}</span>
-              <span className="fpCity">{data[i].city}</span>
-              <span className="fpPrice">Starting from ₹ {data[i].cheapestPrice}</span>
+              <span className="fpName">{data[i]?.name}</span>
+              <span className="fpCity">{data[i]?.city}</span>
+              <span className="fpPrice">Starting from ₹ {data[i]?.cheapestPrice}</span>
              {item.rating && <div className="fpRating">
-                <button>{data[i].rating}⭐</button>
-                <span>{data[i].rating===1 ? "Not Recommended" : data[i].rating===2 ? "Good" : data[i].rating===3 ? "Very Good" : data[i].rating===4 ? "Superb" : "Excellent"}</span>
+                <button>{data[i]?.rating}⭐</button>
+                <span>{data[i]?.rating===1 ? "Not Recommended" : data[i].rating===2 ? "Good" : data[i].rating===3 ? "Very Good" : data[i].rating===4 ? "Superb" : "Excellent"}</span>
               </div>}
             </div>
           ))
