@@ -99,7 +99,7 @@ const Hotel = () => {
       </div>
         {loading? <div style={{height:'90vh', display:'flex', justifyContent:'center', alignItems:'center'}}><Loader/> </div> : 
         <div className='hotelContainer'>
-          {
+          {/* {
             open && <div className="slider">
               <FontAwesomeIcon icon={faCircleXmark} className='close' onClick={()=>setOpen(false)}
               />
@@ -109,7 +109,7 @@ const Hotel = () => {
               </div>
               <FontAwesomeIcon icon={faCircleArrowRight} className='arrow' onClick={()=>handleMove("r")}/>
             </div>
-          }
+          } */}
           <div className='hotelWrapper'>
             <button className='bookNow' onClick={handleBook}>Reserve or Book Now!</button>
             <h1 className='hotelTitle'>{data.name}</h1>
