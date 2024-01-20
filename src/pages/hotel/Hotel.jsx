@@ -99,20 +99,9 @@ const Hotel = () => {
       </div>
         {loading? <div style={{height:'90vh', display:'flex', justifyContent:'center', alignItems:'center'}}><Loader/> </div> : 
         <div className='hotelContainer'>
-          {/* {
-            open && <div className="slider">
-              <FontAwesomeIcon icon={faCircleXmark} className='close' onClick={()=>setOpen(false)}
-              />
-              <FontAwesomeIcon icon={faCircleArrowLeft} className='arrow' onClick={()=>handleMove("l")}/>
-              <div className="sliderWrapper">
-                <img src={data.images[slideNumber]} alt="" className="sliderImg" />
-              </div>
-              <FontAwesomeIcon icon={faCircleArrowRight} className='arrow' onClick={()=>handleMove("r")}/>
-            </div>
-          } */}
           <div className='hotelWrapper'>
             <button className='bookNow' onClick={handleBook}>Reserve or Book Now!</button>
-            <h1 className='hotelTitle'>{data.name}</h1>
+            <h1 className='hotelName'>{data.name}</h1>
             <div className='hotelAddress'>
               <FontAwesomeIcon icon={faLocationDot}/>
               <span>{data.address}</span>
@@ -135,10 +124,12 @@ const Hotel = () => {
                 </p>
               </div>
               <div className="hotelDetailsPrice">
-                <h1>Perfect for a {days}-night stay</h1>
+              <h1>Perfect for a {days!==0 ? `${days}-` : null}night stay</h1>
                 <span>Located in the real heart of krakov, this property has an
                 excellent location score of 9.8!</span>
-                <h2><b>₹{days * data.cheapestPrice * (options.rooms===undefined ? 0 : options.rooms)}</b>({days} nights)</h2>
+                {
+                  days!==0 ? <h2><b>₹{days * data.cheapestPrice * (options.rooms===undefined ? 0 : options.rooms)}</b>({days} nights)</h2> : null
+                }
                 <button onClick={handleBook}>Reserve or Book Now!</button>
               </div>
             </div>

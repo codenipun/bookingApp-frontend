@@ -27,7 +27,10 @@
     cursor: pointer;
 }
 
-.homeTitle{
+.hotelTitle{
+    font-size: 24px;
+}
+.hotelName{
     font-size: 24px;
 }
 
@@ -137,6 +140,7 @@
     cursor: pointer;
 }
 
+
 @media (max-width:450px){
     .hotelHeader{
         display: none;
@@ -151,8 +155,11 @@
     .hotelDetails{
         flex-direction: column;
     }
-    .hotelTitle{
+    .hotelName{
         width: 242px;
+    }
+    .hotelTitle{
+        width: 100%;
     }
     .slider{
         width: 90vw;
