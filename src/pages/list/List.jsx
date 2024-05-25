@@ -23,8 +23,22 @@ const List = () => {
 
   // console.log(location.state.type)
   
-  
+  const debounce = (func, delay) => {
+    let timeoutId;
+    return function (...args) {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+      timeoutId = setTimeout(() => {
+        func.apply(this, args);
+      }, delay);
+    };
+  };
 
+  const handleDestinationChange = debounce((value) => {
+    setDestination(value);
+  }, 300);
+  
   //custom hook to fetch data from backend
   const { data, loading, reFetch } = useFetch(
     `${process.env.REACT_APP_BACKEND_SERVER}/hotels?city=${destination}&min=${minP || 0}&max=${maxP || 19999}` 
@@ -83,7 +97,7 @@ const List = () => {
                 <h1 className='lsTitle'>Search</h1>
                 <div className='lsItem'>
                   <label>Destination</label>
-                  <input className='destination_input' type="text" placeholder={destination} onChange={e=>setDestination(e.target.value)}/>
+                  <input className='destination_input' type="text" placeholder={destination} onChange={e=>handleDestinationChange(e.target.value)}/>
                 </div>
                 <div className='lsItem'>
                   <label>Check-in Date</label>
