@@ -16,25 +16,28 @@ const Login = () => {
         password : undefined
     });
     const navigate = useNavigate()
-    const {loading, error, dispatch} = useContext(AuthContext);
+    const {loading, dispatch} = useContext(AuthContext);
 
     const handleChange = async (e)=>{
         setCredential((prev)=>({...prev, [e.target.id] : e.target.value})); 
     }
     const handleClick = async(e) =>{
         e.preventDefault();
+        if(!credential.username || !credential.password){
+            message.error('Please Enter Details')
+            return;
+        }
         dispatch({type :"LOGIN_START"})
-        
 
         try {
             const res = await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/auth/login`, credential);
             dispatch({type:"LOGIN_SUCCESS", payload : res.data.details });
+            message.success('Successfully Loged In')
             navigate("/");
         } catch (err) {
             dispatch({type : "LOGIN_FAILURE", payload : err.response.data});
+            message.error("Invalid Credentials");
         }
-        
-        message.success('Successfully Loged In')
     }
 
     const handleRegisterClick = () =>{
@@ -56,16 +59,11 @@ const Login = () => {
                     <hr className='line'></hr>
                     <h1>Login</h1>
                     <label className='lLabel'>Username</label>
-                    <input required className='linput' type={'text'} id='username' onChange={handleChange}></input>
+                    <input required className='linput' type={'text'} id='username' onChange={handleChange} value={credential.username}></input>
                     <label className='lLabel'>Password</label>
-                    <input required className='linput' type={'password'} id='password' onChange={handleChange}></input>
+                    <input required className='linput' type={'password'} id='password' onChange={handleChange} value={credential.password}></input>
                     <span className='newUser registerBtn'>Forget Password?</span>
                     <button type='submit' disabled={loading} className='lButton' onClick={handleClick}>Login</button>
-                    {
-                        error && <div>
-                            <span>{error.message}</span>
-                        </div>
-                    }
                 </div>
             </div>
             <div className='foot'>

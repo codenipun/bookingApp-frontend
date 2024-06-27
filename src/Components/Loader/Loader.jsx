@@ -2,7 +2,7 @@ import React from 'react'
 import ReactLoading from "react-loading";
 import "./loader.scss"
 
-const Loader = () => {
+const Loader = ({width=50, height=100}) => {
   return (
     <div className='loader'>
       {/* <h2>Loading in ReactJs - GeeksforGeeks</h2> */}
@@ -17,8 +17,7 @@ const Loader = () => {
       {/* <ReactLoading type="cubes" color="#febb02"
         height={0} width={50} /> */}
 
-      <ReactLoading type="cylon" color="#febb02" 
-        height={100} width={50} /> 
+      <ReactLoading type="cylon" color="#febb02" height={height} width={width}/> 
 
       {/* <ReactLoading  type="spin" color='#febb02'
         height={100} width={50} /> */}

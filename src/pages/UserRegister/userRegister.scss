@@ -80,6 +80,15 @@
     font-weight: 500;
   }
 
+  .register-loader{
+    margin: 15px 0 0;
+    padding: 10px 18px;
+    cursor: pointer;
+    border: 2px solid #30a3f5;
+    border-radius: 4px 4px 4px 4px;
+    background-color: rgb(238, 238, 238);
+  }
+
   @media (max-width : 450px) {
     .form{
       width: 260px;

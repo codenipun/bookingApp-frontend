@@ -5,9 +5,6 @@ import MailList from '../../Components/MailList/MailList'
 import Navbar from '../../Components/Navbar/Navbar'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {
-  faCircleArrowLeft,
-  faCircleArrowRight,
-  faCircleXmark,
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 import useFetch from "../../hooks/useFetch"
