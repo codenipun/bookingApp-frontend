@@ -27,12 +27,3 @@ function App() {
 }
 
 export default App;
-
-
-
-
-/*
-Booking wala components ready hai
-kuch data nhi mil rha h
-samaj nhi aa rha ki payload kese bheje on click
-*/
