@@ -43,7 +43,6 @@ const UserRegister = ({ inputs, title }) => {
   // console.log(info);
   return (
     <>
-
       <Navbar />
       <div className="new">
         <div className="newContainer">
