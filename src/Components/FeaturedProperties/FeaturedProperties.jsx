@@ -13,7 +13,7 @@ const FeaturedProperties = () => {
     }
   return (
     <div className="fp">
-    {loading ? <Loader/> :
+    {loading ? <Loader width={"100%"} height={"100%"} /> :
       (<>
         {
           data?.map((item, i)=>(

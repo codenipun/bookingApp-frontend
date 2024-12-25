@@ -140,7 +140,7 @@ const List = () => {
             )
           }
           <div className='listResult'>
-              {loading ? <Loader/> : 
+              {loading ? <Loader width={"100%"} height={"100%"} /> : 
                 <>
                 {data.length!==0 ? 
                   data.map((item)=>(

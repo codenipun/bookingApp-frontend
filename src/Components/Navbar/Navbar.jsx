@@ -56,8 +56,8 @@ const Navbar = () => {
           <img className='userimg' src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png" alt=""/>
           
           </div> : ( <div className='navItems'>
-                <button onClick={handleRegister} className='navButton'>Register</button>
-                <button onClick={handleLogin} className='navButton'>Login</button>
+                {/* <button onClick={handleRegister} className='navButton'>Register</button>*/}
+                <button onClick={handleLogin} className='navButton'>Login</button> 
             </div>)}
        </div>
 

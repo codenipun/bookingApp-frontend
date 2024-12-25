@@ -86,6 +86,9 @@
     text-decoration: none;
     color: gray;
 }
+.navButton {
+       display: none; 
+}
 .navButton:hover{
     box-shadow: 0px 0px 5px #fff;
 }
@@ -113,6 +116,9 @@
 @media (max-width: 751px) {
     .logo{
         padding: 5px;
+    }
+    .navButton {
+        display: inline;
     }
     .navbar{
         >div{

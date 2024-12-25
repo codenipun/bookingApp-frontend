@@ -34,7 +34,7 @@ const Featured = () => {
 
   return (
     <div className='featured'>
-        {loading? <Loader/> : <>
+        {loading? <Loader width={"100%"} height={"30vh"} /> : <>
             {data.map((item, i)=>(
                 <div key={i} onClick={()=>handleSearch(otherData[i].city.toLowerCase())} className='featuredItem'>
                     <img src={otherData[i].img}

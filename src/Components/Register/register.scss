@@ -1,0 +1,13 @@
+.input-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+@media (max-width : 450px) {
+    .input-container {
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+    }
+}

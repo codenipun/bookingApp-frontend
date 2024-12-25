@@ -94,7 +94,7 @@ const Hotel = () => {
       <div className='hotelHeader'>
         <Header type={'list'}/>
       </div>
-        {loading? <div style={{height:'90vh', display:'flex', justifyContent:'center', alignItems:'center'}}><Loader/> </div> : 
+        {loading? <Loader width={"100%"} height={"85vh"} />: 
         <div className='hotelContainer'>
           <div className='hotelWrapper'>
             <button className='bookNow' onClick={handleBook}>Reserve or Book Now!</button>

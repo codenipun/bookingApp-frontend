@@ -1,0 +1,23 @@
+.login-form-button {
+    background: #0071c2;
+}
+
+@media (max-width : 450px) {
+  .login{
+    height: 100vh;
+  }
+  .lContainer{
+    width: 260px;
+    height: 400px;
+
+    >h1{
+      font-size: 16px;
+    }
+  }
+  .foot{
+    margin-top: 240px;
+  }
+  .login_img_container{
+    display: none;
+  }
+}
