@@ -46,6 +46,8 @@ const List = () => {
   const { data : typeData, reFetch : typeReFetch } = useFetch(
     `${process.env.REACT_APP_BACKEND_SERVER}/hotels/getByType?type=${location.state.type}&min=${minP || 0}&max=${maxP || 19999}` 
   );
+  
+  const {data: hotelData, page, rows} = data;
 
   const handleClick = () =>{
     setOpenFilter(!openFilter)
@@ -142,13 +144,13 @@ const List = () => {
           <div className='listResult'>
               {loading ? <Loader width={"100%"} height={"100%"} /> : 
                 <>
-                {data.length!==0 ? 
-                  data.map((item)=>(
+                {hotelData?.length!==0 ? 
+                  hotelData?.map((item)=>(
                         <SearchItem key={item._id} item = {item} />
                       ))
-                : typeData.length!==0 ? 
+                : typeData?.length!==0 ? 
                  <><div style={{width: "100%", marginBottom: "10px", fontSize: "25px", fontWeight: "500" }}> All {location.state.type}s</div>
-                  {typeData.map((item)=>(
+                  {typeData?.map((item)=>(
                     <SearchItem key={item._id} item={item}/>
                   ))}
                   </>
