@@ -12,6 +12,16 @@ const Bookings = () => {
     const {data, loading} = useFetch(`${process.env.REACT_APP_BACKEND_SERVER}/users/${userId}`);
     
     const bookings = data.bookings;
+
+    // Function to parse DD/MM/YYYY to a JavaScript Date object
+    function parseDate(dateString) {
+      const [day, month, year] = dateString.split('/').map(Number);
+      return new Date(year, month - 1, day); // Month is 0-based in JavaScript
+    }
+    
+    // Sorting bookings by bookingDate
+    bookings?.sort((a, b) => parseDate(b.bookingDate) - parseDate(a.bookingDate));
+    
     // console.log(bookings);
 
     

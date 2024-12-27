@@ -134,7 +134,7 @@ const Hotel = () => {
           <MailList/>
           <Footer/>
         </div>}
-        {openBookLayout && <RoomBookLayout setOpen = {setOpenBookLayout} hotelid = {id} hotelName = {data.name} hotelImg = {data.images[0]} checkin = {dates[0].startDate.toLocaleDateString("en-GB")} checkout = {dates[0].endDate.toLocaleDateString("en-GB")} price={data.cheapestPrice}/>}
+        {openBookLayout && <RoomBookLayout days={days} setOpen = {setOpenBookLayout} hotelid = {id} hotelName = {data.name} hotelImg = {data.images[0]} checkin = {dates[0].startDate.toLocaleDateString("en-GB")} checkout = {dates[0].endDate.toLocaleDateString("en-GB")} price={data.cheapestPrice}/>}
     </div>
   )
 }

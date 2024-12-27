@@ -108,6 +108,12 @@
   background-color: rgb(242, 242, 242);
   border-radius: 10px;
 }
+.total-amount{
+   display: flex;
+   justify-content: flex-end;
+   padding: 10px;
+   gap: 5px;
+}
 @media (max-width:450px) {
 
   .rContainer{

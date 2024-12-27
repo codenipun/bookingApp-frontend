@@ -5,19 +5,21 @@ import useFetch from '../../hooks/useFetch'
 import { SearchContext } from '../../context/SearchContext'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import { message } from 'antd';
+import { Flex, message } from 'antd';
 import "./roomBookLayout.scss";
 import Loader from '../Loader/Loader'
 import { AuthContext } from '../../context/AuthContext'
 
-const RoomBookLayout = ({setOpen, hotelid, hotelName, hotelImg, checkin, checkout, price}) => {
+const RoomBookLayout = ({days, setOpen, hotelid, hotelName, hotelImg, checkin, checkout, price}) => {
   const {user} = useContext(AuthContext);
   const bookingDate = new Date().toLocaleDateString("en-GB");
   // console.log(bookingDate);
   // console.log(checkin);
   // console.log(checkout);
 
-  const [roomId, setRoomId] = useState("")
+  const [roomId, setRoomId] = useState("");
+  const [totalPrice, setTotalPrice] = useState(0);
+
   const userId = user._id;
     const navigate = useNavigate();
     const {data, loading} = useFetch(`${process.env.REACT_APP_BACKEND_SERVER}/hotels/room/${hotelid}`);
@@ -28,12 +30,17 @@ const RoomBookLayout = ({setOpen, hotelid, hotelName, hotelImg, checkin, checkou
     const handleSelect = (e) =>{
         const checked = e.target.checked;
         const value = e.target.value;
-
+        
+        const price = parseFloat(e.target.dataset.price);
         setRoomId(value)
-
+        
+        if (checked) {
+          setTotalPrice((prevTotal) => prevTotal + price); 
+        } else {
+          setTotalPrice((prevTotal) => prevTotal - price);
+        }
         setSelectedRooms(checked ? [...selectedRooms, value] : selectedRooms.filter((item)=>item!==value));
-    }
-    // console.log(selectedRooms);
+      }
     
     let {dates} = useContext(SearchContext);
     // console.log(dates[0].startDate===dates[0].endDate)
@@ -70,42 +77,37 @@ const RoomBookLayout = ({setOpen, hotelid, hotelName, hotelImg, checkin, checkou
 
     return !isFound;
   };
-  // console.log(allDates)
-  // console.log(data);
-    
-
-    const handleClick = async()=>{
-      try {
-        await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/rooms/${userId}/${hotelid}/${roomId}`, {
-          hotelName : hotelName,
-          hotelImg : hotelImg,
-          bookingDate : bookingDate ,
-          checkin : checkin,
-          checkout : checkout, 
-          price : price 
-        });
-      } catch (error) {
-        
-      }
-      if(sameDate){
-        message.warning('Please Select Dates for your Trip !!');
-      }else{
-        try {
-          await Promise.all(
-            selectedRooms.map((roomId) => {
-              const res = axios.put(`${process.env.REACT_APP_BACKEND_SERVER}/rooms/availability/${roomId}`, {
-                dates: allDates,
-              });
-              return res.data;
-            })
-          );
-          message.success('Booking Successful');
-          setOpen(false);
-          navigate("/");
-        } catch (err) {}
-      }
+  const handleClick = async()=>{
+    try {
+      await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/rooms/${userId}/${hotelid}/${roomId}`, {
+        hotelName : hotelName,
+        hotelImg : hotelImg,
+        bookingDate : bookingDate ,
+        checkin : checkin,
+        checkout : checkout, 
+        price : totalPrice 
+      });
+    } catch (error) {
+      
     }
-    // console.log(data)
+    if(sameDate){
+      message.warning('Please Select Dates for your Trip !!');
+    }else{
+      try {
+        await Promise.all(
+          selectedRooms.map((roomId) => {
+            const res = axios.put(`${process.env.REACT_APP_BACKEND_SERVER}/rooms/availability/${roomId}`, {
+              dates: allDates,
+            });
+            return res.data;
+          })
+        );
+        message.success('Booking Successful');
+        setOpen(false);
+        navigate("/");
+      } catch (err) {}
+    }
+  }
   return (
     <div className='reserve'>
       <div className='rContainer'>
@@ -137,6 +139,7 @@ const RoomBookLayout = ({setOpen, hotelid, hotelName, hotelImg, checkin, checkou
                               className='checkbox'
                               type="checkbox"
                               value={roomNumber._id}
+                              data-price={item.price}
                               onChange={handleSelect}
                               disabled={!isAvailable(roomNumber)}
                             />
@@ -146,6 +149,10 @@ const RoomBookLayout = ({setOpen, hotelid, hotelName, hotelImg, checkin, checkou
                       </div>
               </div>
             ))}
+            {totalPrice !==0 ? 
+            <div className='total-amount'>
+              <strong>Total Amount: </strong> <span>₹{totalPrice} </span><span style={{color: 'gray'}}>(For {days || 1} nights)</span>
+            </div> : null}
             <button onClick={handleClick} className="rButton">Reserve Now !</button>
           </div>
         }
