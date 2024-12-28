@@ -38,7 +38,8 @@
 }
 
 .lsItem>label{
-  font-size: 12px;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .lsItem>input{
@@ -53,26 +54,60 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  color: gray;
+  font-size: 13px;
 }
 
-.lsOptions{
-  padding: 10px;
+.price-range {
+  border-bottom: 1.5px solid lightgray;
+  padding: 10px 0px 10px 0px;
+  border-top: 1.5px solid lightgray;
 }
 
-.lsOptionItem{
+.price-range>span {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.sorting {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 0px 10px 0px;
+}
+
+.sorting>span{
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.sorting > div {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
-  color: #555;
-  font-size: 12px;
+  font-size: 14px;
 }
 
-.lsOptionInput{
-  width: 52px;
+.lsOptions {
+  display: flex;
+  font-size: 13px;
+  border-radius: 5px;
+  background-color: white;
+  padding: 10px 0px 10px 8px;
+  color: gray;
+  cursor: pointer;
+  margin-top: 10px;
 }
 
-.lsOptionInput, .destination_input:focus{
+.destination_input:focus{
   outline: none;
+}
+
+.emptyContainer {
+  display: flex;
+  height: 70vh;
+  align-items: center;
+  justify-content: center;
+  color: gray;
 }
 
 .listSearch>button{

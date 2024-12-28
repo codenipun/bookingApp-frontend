@@ -2,13 +2,11 @@
     width: 100%;
     max-width: 1024px;
     display: flex;
-    // justify-content: center;
-    // align-items: center;
     gap: 20px;
     z-index: 1;
     overflow-x: auto;
-    // overflow-x: hidden;
     font-family: 'Roboto';
+    padding: 8px;
   }
 .featured::-webkit-scrollbar {
     display: none;
@@ -16,7 +14,6 @@
 .featuredItem{
     position: relative;
     color: white;
-    // overflow: hidden;
     height: 100%;
     flex:1;
     cursor: pointer;

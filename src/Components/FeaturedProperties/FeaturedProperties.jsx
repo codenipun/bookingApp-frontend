@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const FeaturedProperties = () => {
   const navigate = useNavigate();
   const { data, loading } = useFetch(
-    `${process.env.REACT_APP_BACKEND_SERVER}/hotels?featured=true&limit=4`
+    `${process.env.REACT_APP_BACKEND_SERVER}/hotels?featured=true`
   );
   const handleClick=(id)=>{
     navigate(`/hotels/${id}`);

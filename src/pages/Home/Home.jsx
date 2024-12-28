@@ -15,12 +15,12 @@ const Home = () => {
       <Navbar/>
       <Header/>
       <div className='homecontainer'>
-        <h1 className='homeTitle'>Explore India</h1>
+        <h1 className='homeTitle'>Explore India 🇮🇳</h1>
         <h2 className='homeTitle2'>These popular destinations have a lot to offer</h2>
         <Featured/>
-        <h1 className='homeTitle'>Browse by property type</h1>
+        <h1 className='homeTitle'>Browse By Property Type 🏠</h1>
         <PropertyList/>
-        <h1 className='homeTitle'>Home guest love</h1>
+        <h1 className='homeTitle'>Home Guest Love ❤️</h1>
         <FeaturedProperties/>
         <MailList/>
         <Footer/>

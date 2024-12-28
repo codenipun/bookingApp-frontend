@@ -20,6 +20,10 @@
   width: 80%;
   
 }
+
+.rContainer::-webkit-scrollbar {
+  display: none;
+}
 .checkbox{
   cursor: pointer;
 

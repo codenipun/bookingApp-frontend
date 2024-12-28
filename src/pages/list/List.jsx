@@ -7,6 +7,7 @@ import {DateRange} from 'react-date-range'
 import SearchItem from '../../Components/SearchItem/SearchItem'
 import useFetch from "../../hooks/useFetch"
 import Loader from '../../Components/Loader/Loader'
+import { Slider, Switch } from 'antd'
 
 import "./list.scss"
 
@@ -16,10 +17,14 @@ const List = () => {
   const [destination, setDestination] = useState(location.state.destination);
   const [openDate, setOpenDate] = useState(false);
   const [dates, setDates] = useState(location.state.dates);
-  const options =location.state.options;
+  const options = location.state.options;
 
-  const [minP, setMinP] = useState(undefined);
-  const [maxP, setMaxP] = useState(undefined);
+  const [minP, setMinP] = useState(2199);
+  const [maxP, setMaxP] = useState(9999);
+  const [activeToggle, setActiveToggle] = useState(1);
+  const [sortBy, setSortBy] = useState("cheapestPrice");
+  const [sortOrder, setSortOrder] = useState('asc');
+  const [openOptions, setOpenOptions] = useState(false);
 
   // console.log(location.state.type)
   
@@ -41,10 +46,7 @@ const List = () => {
   
   //custom hook to fetch data from backend
   const { data, loading, reFetch } = useFetch(
-    `${process.env.REACT_APP_BACKEND_SERVER}/hotels?city=${destination}&min=${minP || 0}&max=${maxP || 19999}` 
-  );
-  const { data : typeData, reFetch : typeReFetch } = useFetch(
-    `${process.env.REACT_APP_BACKEND_SERVER}/hotels/getByType?type=${location.state.type}&min=${minP || 0}&max=${maxP || 19999}` 
+    `${process.env.REACT_APP_BACKEND_SERVER}/hotels?city=${destination}&min=${minP}&max=${maxP}&sortBy=${sortBy}&sortOrder=${sortOrder}` 
   );
   
   const {data: hotelData, page, rows} = data;
@@ -52,7 +54,6 @@ const List = () => {
   const handleClick = () =>{
     setOpenFilter(!openFilter)
     reFetch();
-    typeReFetch();
   }
 
   const [windowDimension, setWindowDimension] = useState(null);
@@ -82,6 +83,35 @@ const List = () => {
     }
   }
   
+  const handlePriceChange = (value) => {
+    setMinP(value[0]);
+    setMaxP(value[1]);
+  };
+  
+  const handleToggleChange = (toggleId) => {
+    setActiveToggle(toggleId);
+
+    switch(toggleId) {
+      case 1: 
+        setSortBy("cheapestPrice");
+        setSortOrder("asc");
+        break;
+      
+      case 2:
+        setSortBy("cheapestPrice");
+        setSortOrder("desc");
+        break;
+      
+      case 3: 
+        setSortBy("rating");
+        setSortOrder("desc");
+        break;
+      
+      default: 
+        break;
+    }
+  };
+  
   return (
     
     <div>
@@ -108,35 +138,24 @@ const List = () => {
                   {openDate && <DateRange
                     onChange={(item)=>setDates([item.selection])}
                     minDate = {new Date()}
-                    ranges={dates}
-              />
-              }
-            </div>
-            <div className='lsItem'>
-              <label>Options</label>
-              <div className='lsOptions'>
-                <div className='lsOptionItem'>
-                  <span className='lsOptionText'>Min Price <small>(per night)</small></span>
-                  <input className='lsOptionInput' type={'number'} placeholder='0' onChange={e=>setMinP(e.target.value)}/>
-                </div>                
-                <div className='lsOptionItem'>
-                  <span className='lsOptionText'>Max Price <small>(per night)</small></span>
-                  <input className='lsOptionInput' type={'number'} placeholder='19999' onChange={e=>setMaxP(e.target.value)}/>
+                    ranges={dates}/>
+                  }
                 </div>
-                <div className='lsOptionItem'>
-                  <span className='lsOptionText'>Adults</span>
-                  <input className='lsOptionInput' type={'number'} min={1} placeholder={options.adults}/>
-                </div>  
-                <div className='lsOptionItem'>
-                  <span className='lsOptionText'>Childrens</span>
-                  <input className='lsOptionInput' type={'number'} min={0} placeholder={options.childrens}/>
-                </div>  
-                <div className='lsOptionItem'>
-                  <span className='lsOptionText'>Rooms</span>
-                  <input className='lsOptionInput' type={'number'} min={1} placeholder={options.rooms}/>
-                </div> 
-              </div>               
-            </div>
+                <div className='lsOptions'>{options.adults} Adults | {options.childrens} Childrens | {options.rooms} Rooms</div>
+            <div className='lsItem'>
+              <label style={{padding: '20px 0px 10px 0px'}}>FILTERS</label>
+              <div className="price-range">
+                <span>PRICE</span>
+                <Slider range defaultValue={[2199, 9999]} min={0} max={19999} onChange={handlePriceChange}/>
+                <span>₹{minP} - ₹{maxP}</span>
+              </div>
+              <div className='sorting'>
+                <span>SORT BY</span>
+                <div>Price: Low to High <Switch checked={activeToggle === 1} defaultChecked onChange={() => handleToggleChange(1)} /></div>
+                <div>Price: High to Low <Switch checked={activeToggle === 2} onChange={() => handleToggleChange(2)} /></div>
+                <div>Customers Rating <Switch checked={activeToggle === 3} onChange={() => handleToggleChange(3)} /></div>
+              </div>
+              </div>        
             <button onClick={handleClick}>Search</button>
           </div>
             )
@@ -144,20 +163,12 @@ const List = () => {
           <div className='listResult'>
               {loading ? <Loader width={"100%"} height={"100%"} /> : 
                 <>
-                {hotelData?.length!==0 ? 
-                  hotelData?.map((item)=>(
-                        <SearchItem key={item._id} item = {item} />
-                      ))
-                : typeData?.length!==0 ? 
-                 <><div style={{width: "100%", marginBottom: "10px", fontSize: "25px", fontWeight: "500" }}> All {location.state.type}s</div>
-                  {typeData?.map((item)=>(
-                    <SearchItem key={item._id} item={item}/>
-                  ))}
-                  </>
-                :
-                
-                  <h3 style={{color : "red"}}>Sorry, No Hotels for Now at this Price Range !!</h3>
-                }
+                  {hotelData?.length !==0 ? 
+                    hotelData?.map((item) => ( 
+                      <SearchItem key={item._id} item = {item} />
+                    )) :
+                    <div className='emptyContainer'>No Data Found !!</div>
+                  }
                 </>
               }
           </div>
