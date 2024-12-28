@@ -7,7 +7,7 @@ import {DateRange} from 'react-date-range'
 import SearchItem from '../../Components/SearchItem/SearchItem'
 import useFetch from "../../hooks/useFetch"
 import Loader from '../../Components/Loader/Loader'
-import { Slider, Switch, TreeSelect } from 'antd'
+import { Pagination, Slider, Switch, TreeSelect } from 'antd'
 
 import "./list.scss"
 
@@ -25,6 +25,8 @@ const List = () => {
   const [activeToggle, setActiveToggle] = useState(1);
   const [sortBy, setSortBy] = useState("cheapestPrice");
   const [sortOrder, setSortOrder] = useState('asc');
+  const [pageNumber, setPageNumber] = useState(1);
+  const [pageLimit, setPageLimit] = useState(10);
 
   // console.log(location.state.type)
   
@@ -49,6 +51,8 @@ const List = () => {
     max: maxP,
     sortBy: sortBy,
     sortOrder: sortOrder,
+    page: pageNumber,
+    limit: pageLimit
   });
 
   if (destination) {
@@ -153,6 +157,14 @@ const List = () => {
   const onPropertyChange = (value) => {
     setHotelType(value);
   }
+  
+  const onShowSizeChange = (current, pageSize) => {
+    setPageLimit(pageSize);
+  }
+  
+  const onPageChange = (pagenumber) => {
+    setPageNumber(pagenumber)
+  }
   return (
     
     <div>
@@ -216,15 +228,23 @@ const List = () => {
           }
           <div className='listResult'>
               {loading ? <Loader width={"100%"} height={"100%"} /> : 
-                <>
+                <div style={{marginBottom: '50px'}}>
                   {hotelData?.length !==0 ? 
                     hotelData?.map((item) => ( 
                       <SearchItem key={item._id} item = {item} />
                     )) :
                     <div className='emptyContainer'>No Data Found !!</div>
                   }
-                </>
+                </div>
               }
+              <div className='pagination'>
+                <Pagination 
+                  defaultCurrent={page} 
+                  total={rows} 
+                  showSizeChanger
+                  onShowSizeChange={onShowSizeChange}
+                  onChange={onPageChange} />
+              </div>
           </div>
         </div>
       </div>
