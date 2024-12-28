@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import Loader from '../Loader/Loader';
 import { Button, Form, Input, message } from 'antd';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './register.scss'
 
 const Register = ({setActiveKey}) => {
-    const [err, setErr] = useState();
     const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
@@ -20,14 +18,12 @@ const Register = ({setActiveKey}) => {
             message.success("Successfully Registered, Please Login to explore")
         } catch (err) {
             console.log(err);
-            message.error('Failed to Register')
+            message.error(err.response.data.error)
         }
         setLoading(false);
     };
   
-    return loading ? (
-        <Loader width={"100%"} height={"30vh"} />
-      ) : (
+    return (
         <Form
           name="normal_login"
           className="login-form"
@@ -105,7 +101,7 @@ const Register = ({setActiveKey}) => {
             </div>
           </div>
           <Form.Item>
-            <Button type="primary" htmlType="submit" className="login-form-button">
+            <Button loading={loading} type="primary" htmlType="submit" className="login-form-button">
               Submit
             </Button>
           </Form.Item>

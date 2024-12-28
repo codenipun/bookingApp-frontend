@@ -5,7 +5,7 @@ import useFetch from '../../hooks/useFetch'
 import { SearchContext } from '../../context/SearchContext'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import { Flex, message } from 'antd';
+import { message } from 'antd';
 import "./roomBookLayout.scss";
 import Loader from '../Loader/Loader'
 import { AuthContext } from '../../context/AuthContext'

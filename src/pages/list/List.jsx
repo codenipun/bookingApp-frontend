@@ -25,7 +25,6 @@ const List = () => {
   const [activeToggle, setActiveToggle] = useState(1);
   const [sortBy, setSortBy] = useState("cheapestPrice");
   const [sortOrder, setSortOrder] = useState('asc');
-  const [openOptions, setOpenOptions] = useState(false);
 
   // console.log(location.state.type)
   

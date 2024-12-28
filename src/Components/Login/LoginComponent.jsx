@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 // import { AuthContext } from "../../context/authContext";
 import "./login.scss";
 import { Button, Checkbox, Form, Input, message } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import Loader from "../Loader/Loader.jsx";
 import { AuthContext } from "../../context/AuthContext.js";
 import axios from "axios";
 
@@ -25,9 +24,7 @@ const LoginComponent = () => {
             message.error("Invalid Credentials");
         }
     };
-    return loading ? (
-        <Loader width={"100%"} height={"30vh"} />
-    ) : (
+    return (
         <Form
         name="normal_login"
         
@@ -63,7 +60,7 @@ const LoginComponent = () => {
         </div>
 
         <Form.Item>
-            <Button type="primary" htmlType="submit" className="login-form-button">
+            <Button loading={loading} type="primary" htmlType="submit" className="login-form-button">
             Log in
             </Button>
         </Form.Item>

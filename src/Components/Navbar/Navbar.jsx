@@ -13,7 +13,7 @@ const Navbar = () => {
     userId = user._id;
   }
   // console.log(user)
-  const {data, loading, reFetch} = useFetch(`${process.env.REACT_APP_BACKEND_SERVER}/users/${userId}`);
+  const {data, reFetch} = useFetch(`${process.env.REACT_APP_BACKEND_SERVER}/users/${userId}`);
 
   let bookings = [];
 
@@ -25,9 +25,6 @@ const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const handleLogin=()=>{
     navigate("/login")
-  }
-  const handleRegister=()=>{
-    navigate("/register")
   }
 
   const handleLogout = () =>{

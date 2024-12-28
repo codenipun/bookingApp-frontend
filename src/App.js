@@ -1,9 +1,7 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 // import Hotel from './Components/Hotel/Hotel';
-import {userInputs} from "./Components/FormSource/FormSource"
 import Hotel from './pages/hotel/Hotel';
-import UserRegister from './pages/UserRegister/UserRegister';
 import Login from './pages/Login/Login';
 import Home from "./pages/Home/Home";
 import List from "./pages/list/List"
