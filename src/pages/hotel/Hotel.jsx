@@ -4,16 +4,15 @@ import Header from '../../Components/Header/Header'
 import MailList from '../../Components/MailList/MailList'
 import Navbar from '../../Components/Navbar/Navbar'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {
-  faLocationDot,
-} from "@fortawesome/free-solid-svg-icons";
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import useFetch from "../../hooks/useFetch"
 import { useLocation, useNavigate } from 'react-router-dom'
-import { SearchContext } from '../../context/SearchContext'
 import { AuthContext } from '../../context/AuthContext'
 import RoomBookLayout from '../../Components/RoomBookLayout/RoomBookLayout'
 import Loader from '../../Components/Loader/Loader'
 import "./hotel.scss"
+import { DateRange } from 'react-date-range'
+import { format } from 'date-fns'
 
 const Hotel = () => {
   const photos = [
@@ -38,8 +37,9 @@ const Hotel = () => {
   ];
   const {user} = useContext(AuthContext);
   const [slideNumber, setSlideNumber] = useState(0);
-  const [open, setOpen] = useState(false); // for slider
-  const [openBookLayout, setOpenBookLayout] = useState(false)  //openBookLayout===openModal
+  const [open, setOpen] = useState(false);
+  const [openBookLayout, setOpenBookLayout] = useState(false)
+  const [openDate, setOpenDate] = useState(false);
 
   const handleOpen = (i)=>{
     setSlideNumber(i);
@@ -51,12 +51,13 @@ const Hotel = () => {
 
   const {data, loading } = useFetch( `${process.env.REACT_APP_BACKEND_SERVER}/hotels/find/${id}` );
   
-  let {dates, options} = useContext(SearchContext)
-  // console.log(options.room===undefined)
+  const [dates, setDates] = useState(
+    location.state.dates
+  );
+  const options = location?.state.options;
   
-  if(dates.length===0) dates = [{startDate : new Date(), endDate : new Date(), key:'selection'}];
-  // console.log(dates);
-  // console.log(typeof dates[0].startDate.toLocaleDateString('en-GB'));
+  if(dates.length === 0) dates = [{startDate : new Date(), endDate : new Date(), key:'selection'}];
+  console.log(dates);
   
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
@@ -65,11 +66,9 @@ const Hotel = () => {
     return diffDays;
   }
 
-  // console.log(data.images[0]);
   const days  = dayDifference(dates[0].startDate, dates[0].endDate);
-  // console.log(days)
-
-  const handleMove = (direction) =>{
+  
+  const handleMove = (direction) => {
     let newSlideNumber;
 
     if(direction==='l'){
@@ -79,6 +78,7 @@ const Hotel = () => {
     }
     setSlideNumber(newSlideNumber);
   }
+  
   const navigate = useNavigate();
   
   const handleBook = () =>{
@@ -88,6 +88,7 @@ const Hotel = () => {
       navigate("/login");
     }
   }
+  
   return (
     <div>
       <Navbar />
@@ -108,18 +109,28 @@ const Hotel = () => {
               <span>{data.address}</span>
             </div>
             <span className="hotelDistance">
-              Excellent location - {data.distance}m from center
+              Excellent location - {data.distance} from center
             </span>
             <span className="hotelPriceHighlight">
               Book a stay over ₹{data.cheapestPrice} at this property and get a free air taxi
             </span>
+            <div className='dates'>
+              <label>Check-in Date</label>
+              <span onClick={()=>{setOpenDate(!openDate)}}>{`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(dates[0].endDate, "MM/dd/yyyy")}`} </span>
+              
+              {openDate && <DateRange
+                onChange={(item)=>setDates([item.selection])}
+                minDate = {new Date()}
+                ranges={dates}/>
+              }
+            </div>
             <div className="hotelImages">
               {photos.map((photo, i) => (
                 <div key={i} className="hotelImgWrapper">
                   <img
                     onClick={() => handleOpen(i)}
                     src={photo.src}
-                    alt={`Photo ${i + 1}`}
+                    alt=''
                     className="hotelImg"
                   />
                 </div>
@@ -147,6 +158,7 @@ const Hotel = () => {
       )}
       {openBookLayout && (
         <RoomBookLayout
+          dates={dates}
           days={days}
           setOpen={setOpenBookLayout}
           hotelid={id}
@@ -159,7 +171,6 @@ const Hotel = () => {
       )}
     </div>
   );
-  
 }
 
 export default Hotel

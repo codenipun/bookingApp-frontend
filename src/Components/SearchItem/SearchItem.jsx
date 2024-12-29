@@ -1,10 +1,16 @@
 import React from 'react'
 import './searchItem.scss'
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import "./searchItem.scss"
 
-
-const SearchItem = ({item}) => {
+const SearchItem = ({item, dates, options}) => {
+  const navigate = useNavigate();
+  console.log(dates)
+  
+  const handleSeeAvailability = () => {
+    navigate(`/hotels/${item._id}`, {state:{dates, options}});
+  }
+  
   return (
     <div className='searchItem'>
         <img src={item.images[0]} alt='' className='siImg'/>
@@ -35,9 +41,9 @@ const SearchItem = ({item}) => {
                     <span className="siPrice">₹ {item.cheapestPrice}</span>
                     <span className="siTaxOp">Includes taxes and fees</span>
                   </div>
-                  <Link to={`/hotels/${item._id}`}>
-                    <button className="siCheckButton">See availability</button>
-                  </Link>
+                  {/* <Link to={`/hotels/${item._id}`}> */}
+                    <button onClick={handleSeeAvailability} className="siCheckButton">See availability</button>
+                  {/* </Link> */}
               </div>
           </div>
         </div>

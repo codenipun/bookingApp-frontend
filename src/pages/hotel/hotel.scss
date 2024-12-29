@@ -54,6 +54,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-top: 90px;
 }
 .hotelImgWrapper {
     width: 33%;
@@ -140,6 +141,36 @@
     cursor: pointer;
 }
 
+.dates {
+    display: flex;
+    justify-content: center;
+    // align-items: center; 
+    flex-direction: column;
+    width: auto;
+    gap: 10px;
+    position: absolute;
+    top: 115px;
+    padding: 10px 5px;
+    background-color: #febb02;
+    
+    >label {
+        // border: 1px solid black;
+        font-size: 14px;
+        font-weight: bold;
+        border-radius: 5px;
+    }
+    
+    >span {
+        color: gray;
+        background-color: white;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        // justify-content: center;
+        padding: 0px 5px;
+        cursor: pointer;
+    }
+}
 
 @media (max-width:450px){
     .hotelHeader{

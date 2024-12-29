@@ -2,7 +2,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCircleXmark} from "@fortawesome/free-solid-svg-icons"
 import React, { useContext, useState } from 'react'
 import useFetch from '../../hooks/useFetch'
-import { SearchContext } from '../../context/SearchContext'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { message } from 'antd';
@@ -10,7 +9,7 @@ import "./roomBookLayout.scss";
 import Loader from '../Loader/Loader'
 import { AuthContext } from '../../context/AuthContext'
 
-const RoomBookLayout = ({days, setOpen, hotelid, hotelName, hotelImg, checkin, checkout}) => {
+const RoomBookLayout = ({dates, days, setOpen, hotelid, hotelName, hotelImg, checkin, checkout}) => {
   const {user} = useContext(AuthContext);
   const [roomId, setRoomId] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
@@ -21,10 +20,9 @@ const RoomBookLayout = ({days, setOpen, hotelid, hotelName, hotelImg, checkin, c
   days = days === 0 ? 1 : days;
   const userId = user._id;
   const {data, loading} = useFetch(`${process.env.REACT_APP_BACKEND_SERVER}/hotels/room/${hotelid}`);
-  let sameDate = false;
+  let today = false;
   
-  
-  const handleSelect = (e) =>{
+  const handleSelect = (e) => {
     const checked = e.target.checked;
     const value = e.target.value;
     
@@ -38,28 +36,26 @@ const RoomBookLayout = ({days, setOpen, hotelid, hotelName, hotelImg, checkin, c
     }
     setSelectedRooms(checked ? [...selectedRooms, value] : selectedRooms.filter((item)=>item!==value));
   }
-  
-  let {dates} = useContext(SearchContext);
 
-  if(dates.length===0) dates = [{startDate : new Date(), endDate : new Date(), key:'selection'}];
+  if(dates.length === 0) dates = [{startDate : new Date(), endDate : new Date(), key:'selection'}];
 
   const getDateInRange = (startDate, endDate) => {
-      const start = new Date(startDate)
-      const end = new Date(endDate)
-      
-      if(start.getTime()===end.getTime()) {
-        sameDate = true;
-      }
+    const start = new Date(startDate)
+    const end = new Date(endDate)
+    
+    if(start.getTime()===end.getTime() && start.getDate() === new Date().getDate()) {
+      today = true;
+    }
 
-      const date = new Date(start.getTime());
+    const date = new Date(start.getTime());
 
-      let list = [];
-      while(date<=end) {
-          list.push(new Date(date).getTime());
-          date.setDate(date.getDate()+1);
-      }
-      
-      return list;
+    let list = [];
+    while(date <= end) {
+      list.push(new Date(date).getTime());
+      date.setDate(date.getDate()+1);
+    }
+    
+    return list;
   }
   const allDates = (getDateInRange(dates[0].startDate, dates[0].endDate));
 
@@ -70,8 +66,9 @@ const RoomBookLayout = ({days, setOpen, hotelid, hotelName, hotelImg, checkin, c
 
     return !isFound;
   };
+  
   const handleClick = async() => {
-    if(sameDate) {
+    if(today) {
       message.warning('Please Select Dates for your Trip !!');
       return;
     }

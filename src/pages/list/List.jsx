@@ -18,7 +18,7 @@ const List = () => {
   const [hotelType ,setHotelType] = useState(location.state.type);
   const [openDate, setOpenDate] = useState(false);
   const [dates, setDates] = useState(location.state.dates);
-  const options = location.state.options;
+  const options = location?.state.options;
 
   const [minP, setMinP] = useState(2199);
   const [maxP, setMaxP] = useState(9999);
@@ -231,7 +231,7 @@ const List = () => {
                 <div style={{marginBottom: '50px'}}>
                   {hotelData?.length !==0 ? 
                     hotelData?.map((item) => ( 
-                      <SearchItem key={item._id} item = {item} />
+                      <SearchItem key={item._id} item = {item} dates={dates} options={options} />
                     )) :
                     <div className='emptyContainer'>No Data Found !!</div>
                   }
