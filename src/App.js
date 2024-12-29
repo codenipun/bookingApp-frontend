@@ -1,6 +1,5 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
-// import Hotel from './Components/Hotel/Hotel';
 import Hotel from './pages/hotel/Hotel';
 import Login from './pages/Login/Login';
 import Home from "./pages/Home/Home";
