@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Footer from '../../Components/Footer/Footer'
 import Header from '../../Components/Header/Header'
 import MailList from '../../Components/MailList/MailList'
@@ -51,13 +51,17 @@ const Hotel = () => {
 
   const {data, loading } = useFetch( `${process.env.REACT_APP_BACKEND_SERVER}/hotels/find/${id}` );
   
-  const [dates, setDates] = useState(
-    location.state.dates
-  );
-  const options = location?.state.options;
-  
-  if(dates.length === 0) dates = [{startDate : new Date(), endDate : new Date(), key:'selection'}];
-  console.log(dates);
+  const [dates, setDates] = useState([
+    { startDate: new Date(), endDate: new Date(), key: 'selection' },
+  ]);
+  const [options, setOptions] = useState([{ adults: 1, childrens: 0, rooms: 1 }]);
+
+  useEffect(() => {
+    if (location.state) {
+      setDates(location.state.dates);
+      setOptions(location.state.options);
+    }
+  }, [location.state]); // Depend on location.state
   
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
