@@ -4,6 +4,7 @@ import Loader from '../Loader/Loader';
 import { useNavigate } from 'react-router-dom';
 import { SearchContext } from '../../context/SearchContext';
 import "./featured.scss"
+import Skeleton from '../SkeletonLoader/Skeleton';
 
 const Featured = () => {
     const navigate = useNavigate()
@@ -34,7 +35,11 @@ const Featured = () => {
 
   return (
     <div className='featured'>
-        {loading? <Loader width={"100%"} height={"30vh"} /> : <>
+        {loading? <div style={{display: 'flex'}}>
+          <Skeleton width={300} height={200} loading={loading}/>
+          <Skeleton width={300} height={200} loading={loading}/>
+          <Skeleton width={300} height={200} loading={loading}/>
+        </div> : <>
             {data.map((item, i)=>(
                 <div key={i} onClick={()=>handleSearch(otherData[i].city.toLowerCase())} className='featuredItem'>
                     <img src={otherData[i].img}

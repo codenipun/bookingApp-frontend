@@ -1,5 +1,6 @@
 import useFetch from '../../hooks/useFetch';
 import Loader from '../Loader/Loader';
+import Skeleton from '../SkeletonLoader/Skeleton';
 import "./featuredProperties.scss"
 import { useNavigate } from 'react-router-dom';
 
@@ -16,7 +17,11 @@ const FeaturedProperties = () => {
   
   return (
     <div className="fp">
-    {loading ? <Loader width={"100%"} height={"100%"} /> :
+    {loading ? <div style={{display: 'flex'}}>
+          <Skeleton width={300} height={200} loading={loading}/>
+          <Skeleton width={300} height={200} loading={loading}/>
+          <Skeleton width={300} height={200} loading={loading}/>
+        </div>:
       (<>
         {
           hotelData?.map((item, i)=>(

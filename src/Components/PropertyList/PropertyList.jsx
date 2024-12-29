@@ -1,5 +1,6 @@
 import useFetch from '../../hooks/useFetch';
 import Loader from '../Loader/Loader';
+import Skeleton from '../SkeletonLoader/Skeleton';
 import "./propertylist.scss"
 import { useNavigate } from 'react-router-dom';
 
@@ -35,7 +36,13 @@ const PropertyList = () => {
 
   return (
     <div className='pList'>
-      {loading ? <Loader width={"100%"} height={"100%"} /> : <>
+      {loading ? <div style={{display: 'flex'}}>
+          <Skeleton width={165} height={120} loading={loading}/>
+          <Skeleton width={165} height={120} loading={loading}/>
+          <Skeleton width={165} height={120} loading={loading}/>
+          <Skeleton width={165} height={120} loading={loading}/>
+          <Skeleton width={165} height={120} loading={loading}/>
+        </div> : <>
         {
           data && 
             images.map((img, i)=>(

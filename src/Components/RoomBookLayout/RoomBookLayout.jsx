@@ -71,6 +71,10 @@ const RoomBookLayout = ({days, setOpen, hotelid, hotelName, hotelImg, checkin, c
     return !isFound;
   };
   const handleClick = async() => {
+    if(sameDate) {
+      message.warning('Please Select Dates for your Trip !!');
+      return;
+    }
     try {
       await axios.post(`${process.env.REACT_APP_BACKEND_SERVER}/rooms/${userId}/${hotelid}/${roomId}`, {
         hotelName : hotelName,
@@ -80,25 +84,19 @@ const RoomBookLayout = ({days, setOpen, hotelid, hotelName, hotelImg, checkin, c
         checkout : checkout, 
         price : totalPrice 
       });
-    } catch (error) {
-      
-    }
-    if(sameDate){
-      message.warning('Please Select Dates for your Trip !!');
-    }else{
-      try {
-        await Promise.all(
-          selectedRooms.map((roomId) => {
-            const res = axios.put(`${process.env.REACT_APP_BACKEND_SERVER}/rooms/availability/${roomId}`, {
-              dates: allDates,
-            });
-            return res.data;
-          })
-        );
-        message.success('Booking Successful');
-        setOpen(false);
-        navigate("/");
-      } catch (err) {}
+      await Promise.all(
+        selectedRooms.map((roomId) => {
+          const res = axios.put(`${process.env.REACT_APP_BACKEND_SERVER}/rooms/availability/${roomId}`, {
+            dates: allDates,
+          });
+          return res.data;
+        })
+      );
+      message.success('Yay, Hotel Booked Successfully, Explore More !!');
+      setOpen(false);
+      navigate("/");
+    } catch (err) {
+      message.error(err.message);
     }
   }
   return (

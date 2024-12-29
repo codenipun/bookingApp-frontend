@@ -122,7 +122,7 @@ const Hotel = () => {
               </div>
               <div className="hotelDetailsPrice">
               <h1>Perfect for a {days!==0 ? `${days}-` : null}night stay</h1>
-                <span>Located in the real heart of krakov, this property has an
+                <span>Located in the real heart of {data.city}, this property has an
                 excellent location score of 9.8!</span>
                 {
                   days!==0 ? <h2><b>₹{days * data.cheapestPrice * (options.rooms===undefined ? 0 : options.rooms)}</b>({days} nights)</h2> : null

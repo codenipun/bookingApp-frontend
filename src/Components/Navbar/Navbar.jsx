@@ -3,7 +3,9 @@ import {Link, useNavigate} from "react-router-dom"
 import { AuthContext } from '../../context/AuthContext'
 import "./navbar.scss"
 import useFetch from '../../hooks/useFetch'
-import { message } from 'antd';
+import { Button, Dropdown, message } from 'antd';
+import { BookOutlined, DashboardOutlined, LoginOutlined, LogoutOutlined, QuestionCircleOutlined, UserOutlined } from "@ant-design/icons";
+
 
 const Navbar = () => {
   // const {user:currUser} = useContext(AuthContext);
@@ -35,50 +37,77 @@ const Navbar = () => {
     navigate("/");
     message.success('Successfully Loged Out')
   }
+  const items = [
+    {
+      label: user?.username,
+      key: "1",
+      icon: <UserOutlined />,
+    },
+    {
+      label: "My Bookings",
+      key: "3",
+      icon: <BookOutlined />
+    },
+    {
+      label: 'Admin Dashboard',
+      key: "4",
+      icon: <DashboardOutlined />
+    },
+    {
+      label: "Logout",
+      key: "2",
+      icon: <LogoutOutlined />,
+    },
+  ];
+  
+  const handleMenuClick = (e) => {
+    switch(e.key) { 
+      case '2': 
+        handleLogout();
+        break;
+      case '3': 
+        navigate('bookings');
+        break;
+      default:
+        break;
+    }
+  };
+  
+  const menuProps = {
+    items,
+    onClick: handleMenuClick,
+  };
 
   return (
     <div className='navbar'>
       <div>
         <Link to={"/"} style={{textDecoration:"none", color:"white"}}>
-        <div className='logo'>
+          <div className='logo'>
               Hotel Booking
           </div>
         </Link>
-       <div className='logo-booking'>
-          {(user && bookings!==undefined && bookings.length!==0) ? <Link className='totalBookings' style={{textDecoration:"none", color:"white"}} to={"/bookings"}>Bookings</Link>
-            : <></>}
-            {user ? <div onClick={()=>setOpenMenu(!openMenu)} >
-
-            
-          <img className='userimg' src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png" alt=""/>
+        <div className='logo-booking'>
+          {(user && bookings?.length !==0 ) ? <Button primary ghost>Bookings</Button>
+            : null}
+            {user ? 
+            <div >
+              <Dropdown
+                placement="bottomRight"
+                arrow={{
+                  pointAtCenter: true,
+                }}
+                menu={menuProps}>
+              <Button style={{display:'flex', justifyContent:'center', alignItems
+              :'center'}}>
+                <UserOutlined />
+              </Button>
+              </Dropdown>
           
-          </div> : ( <div className='navItems'>
+            </div> : ( <div className='navItems'>
                 {/* <button onClick={handleRegister} className='navButton'>Register</button>*/}
                 <button onClick={handleLogin} className='navButton'>Login</button> 
             </div>)}
        </div>
-
-        {openMenu &&
-            <div className='menu'>
-              <Link className='menuLink'>
-                <div className="menuItem">{user.username}</div>
-              </Link>
-              {user.username === "codenipun" && 
-                <div className="menuItem "><a className='adminlink' href='https://booking-app-admin.onrender.com/'>ADMIN</a></div>
-              }
-              <Link 
-              to={"/bookings"} 
-              className='menuLink'>
-                <div className="menuItem">Bookings</div>
-              </Link>
-              <Link onClick={handleLogout} className='menuLink'>
-                <div className="menuItem">Logout</div>
-              </Link>
-              <Link className='menuLink'>
-                <div  className="menuItem">Settings</div>
-              </Link>
-            </div>
-        }         
       </div>
     </div>
   )
