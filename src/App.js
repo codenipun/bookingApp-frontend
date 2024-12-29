@@ -8,9 +8,12 @@ import List from "./pages/list/List"
 import './app.scss'
 import Bookings from './pages/Bookings/Bookings';
 
+// const baseUrl = '';
+const baseUrl= '/https://booking-app-mx29.onrender.com';
+
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={baseUrl}>
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/hotels' element={<List/>}/>

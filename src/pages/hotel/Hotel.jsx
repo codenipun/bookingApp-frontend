@@ -90,53 +90,76 @@ const Hotel = () => {
   }
   return (
     <div>
-      <Navbar/>
-      <div className='hotelHeader'>
-        <Header type={'list'}/>
+      <Navbar />
+      <div className="hotelHeader">
+        <Header type="list" />
       </div>
-        {loading? <Loader width={"100%"} height={"85vh"} />: 
-        <div className='hotelContainer'>
-          <div className='hotelWrapper'>
-            <button className='bookNow' onClick={handleBook}>Reserve or Book Now!</button>
-            <h1 className='hotelName'>{data.name}</h1>
-            <div className='hotelAddress'>
-              <FontAwesomeIcon icon={faLocationDot}/>
+      {loading ? (
+        <Loader width="100%" height="85vh" />
+      ) : (
+        <div className="hotelContainer">
+          <div className="hotelWrapper">
+            <button className="bookNow" onClick={handleBook}>
+              Reserve or Book Now!
+            </button>
+            <h1 className="hotelName">{data.name}</h1>
+            <div className="hotelAddress">
+              <FontAwesomeIcon icon={faLocationDot} />
               <span>{data.address}</span>
             </div>
-            <span className="hotelDistance">Excellent location - {data.distance}m from center</span>
-            <span className="hotelPriceHighlight">Book a stay over ₹{data.cheapestPrice} at this property and get a free air taxi</span>
+            <span className="hotelDistance">
+              Excellent location - {data.distance}m from center
+            </span>
+            <span className="hotelPriceHighlight">
+              Book a stay over ₹{data.cheapestPrice} at this property and get a free air taxi
+            </span>
             <div className="hotelImages">
-              {
-                photos.map((photo, i)=>(
-                  <div key={i} className="hotelImgWrapper">
-                    <img onClick={()=>handleOpen(i)} src={photo.src} alt="" className='hotelImg' />
-                  </div>
-                ))
-              }
+              {photos.map((photo, i) => (
+                <div key={i} className="hotelImgWrapper">
+                  <img
+                    onClick={() => handleOpen(i)}
+                    src={photo.src}
+                    alt={`Photo ${i + 1}`}
+                    className="hotelImg"
+                  />
+                </div>
+              ))}
             </div>
             <div className="hotelDetails">
               <div className="hotelDetailsTexts">
                 <h1 className="hotelTitle">{data.title}</h1>
-                <p className="hotelDesc">{data.desc}
-                </p>
+                <p className="hotelDesc">{data.desc}</p>
               </div>
               <div className="hotelDetailsPrice">
-              <h1>Perfect for a {days!==0 ? `${days}-` : null}night stay</h1>
-                <span>Located in the real heart of {data.city}, this property has an
-                excellent location score of 9.8!</span>
-                {
-                  days!==0 ? <h2><b>₹{days * data.cheapestPrice * (options.rooms===undefined ? 0 : options.rooms)}</b>({days} nights)</h2> : null
-                }
+                <h1>Perfect for a {days ? `${days}-` : ""}night stay</h1>
+                <span>
+                  Located in the real heart of {data.city}, this property has an
+                  excellent location score of 9.8!
+                </span>
+                {days!==0 ? <h2><b>₹{days * data.cheapestPrice * (options.rooms===undefined ? 0 : options.rooms)}</b>({days} nights)</h2> : null}
                 <button onClick={handleBook}>Reserve or Book Now!</button>
               </div>
             </div>
           </div>
-          <MailList/>
-          <Footer/>
-        </div>}
-        {openBookLayout && <RoomBookLayout days={days} setOpen = {setOpenBookLayout} hotelid = {id} hotelName = {data.name} hotelImg = {data.images[0]} checkin = {dates[0].startDate.toLocaleDateString("en-GB")} checkout = {dates[0].endDate.toLocaleDateString("en-GB")} price={data.cheapestPrice}/>}
+          <MailList />
+          <Footer />
+        </div>
+      )}
+      {openBookLayout && (
+        <RoomBookLayout
+          days={days}
+          setOpen={setOpenBookLayout}
+          hotelid={id}
+          hotelName={data.name}
+          hotelImg={data.images?.[0]}
+          checkin={dates[0].startDate.toLocaleDateString("en-GB")}
+          checkout={dates[0].endDate.toLocaleDateString("en-GB")}
+          price={data.cheapestPrice}
+        />
+      )}
     </div>
-  )
+  );
+  
 }
 
 export default Hotel

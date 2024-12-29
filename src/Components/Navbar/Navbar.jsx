@@ -4,7 +4,7 @@ import { AuthContext } from '../../context/AuthContext'
 import "./navbar.scss"
 import useFetch from '../../hooks/useFetch'
 import { Button, Dropdown, message } from 'antd';
-import { BookOutlined, DashboardOutlined, LoginOutlined, LogoutOutlined, QuestionCircleOutlined, UserOutlined } from "@ant-design/icons";
+import { BookOutlined, DashboardOutlined, LogoutOutlined, UserOutlined } from "@ant-design/icons";
 
 
 const Navbar = () => {
@@ -87,7 +87,7 @@ const Navbar = () => {
           </div>
         </Link>
         <div className='logo-booking'>
-          {(user && bookings?.length !==0 ) ? <Button primary ghost>Bookings</Button>
+          {(user && bookings?.length !== 0 ) ? <Button on onClick={() => navigate("/bookings")} primary ghost>Bookings</Button>
             : null}
             {user ? 
             <div >
