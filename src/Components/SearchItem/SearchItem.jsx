@@ -5,7 +5,6 @@ import "./searchItem.scss"
 
 const SearchItem = ({item, dates, options}) => {
   const navigate = useNavigate();
-  console.log(dates)
   
   const handleSeeAvailability = () => {
     navigate(`/hotels/${item._id}`, {state:{dates, options}});

@@ -54,7 +54,7 @@ const Hotel = () => {
   const [dates, setDates] = useState([
     { startDate: new Date(), endDate: new Date(), key: 'selection' },
   ]);
-  const [options, setOptions] = useState([{ adults: 1, childrens: 0, rooms: 1 }]);
+  const [options, setOptions] = useState({ adults: 1, childrens: 0, rooms: 1 });
 
   useEffect(() => {
     if (location.state) {
@@ -62,15 +62,16 @@ const Hotel = () => {
       setOptions(location.state.options);
     }
   }, [location.state]); // Depend on location.state
+
   
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
     const timeDiff = Math.abs(date2.getTime() - date1.getTime());
     const diffDays = Math.ceil(timeDiff / MILLISECONDS_PER_DAY);
-    return diffDays;
+    return diffDays === 0 ? 1 : diffDays;
   }
 
-  const days  = dayDifference(dates[0].startDate, dates[0].endDate);
+  const days = dayDifference(dates[0].startDate, dates[0].endDate);
   
   const handleMove = (direction) => {
     let newSlideNumber;
@@ -105,12 +106,23 @@ const Hotel = () => {
         <div className="hotelContainer">
           <div className="hotelWrapper">
             <button className="bookNow" onClick={handleBook}>
-              Reserve or Book Now!
+              Explore Rooms
             </button>
+            <div className='checkInDates'>
+              <label style={{fontSize: '12px', fontWeight: 'bold', color: 'black'}}>Check-in Dates</label>
+              <span onClick={()=>{setOpenDate(!openDate)}} style={{cursor: 'pointer'}}>{`${format(dates[0].startDate, "MM/dd/yyyy")}`} <span style={{color: '#004cb8'}}>{`->`}</span> {`${format(dates[0].endDate, "MM/dd/yyyy")}`} </span>
+            </div>
+              <div style={{position: 'absolute', right: '0', top: '120px'}}>
+                {openDate && <DateRange
+                  onChange={(item)=>setDates([item.selection])}
+                  minDate = {new Date()}
+                  ranges={dates}/>
+                }
+              </div>
             <h1 className="hotelName">{data.name}</h1>
             <div className="hotelAddress">
               <FontAwesomeIcon icon={faLocationDot} />
-              <span>{data.address}</span>
+              <span className>{data.address}</span>
             </div>
             <span className="hotelDistance">
               Excellent location - {data.distance} from center
@@ -118,16 +130,6 @@ const Hotel = () => {
             <span className="hotelPriceHighlight">
               Book a stay over ₹{data.cheapestPrice} at this property and get a free air taxi
             </span>
-            <div className='dates'>
-              <label>Check-in Date</label>
-              <span onClick={()=>{setOpenDate(!openDate)}}>{`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(dates[0].endDate, "MM/dd/yyyy")}`} </span>
-              
-              {openDate && <DateRange
-                onChange={(item)=>setDates([item.selection])}
-                minDate = {new Date()}
-                ranges={dates}/>
-              }
-            </div>
             <div className="hotelImages">
               {photos.map((photo, i) => (
                 <div key={i} className="hotelImgWrapper">
@@ -149,10 +151,16 @@ const Hotel = () => {
                 <h1>Perfect for a {days ? `${days}-` : ""}night stay</h1>
                 <span>
                   Located in the real heart of {data.city}, this property has an
-                  excellent location score of 9.8!
+                  excellent location score of 9.8
                 </span>
-                {days!==0 ? <h2><b>₹{days * data.cheapestPrice * (options.rooms===undefined ? 0 : options.rooms)}</b>({days} nights)</h2> : null}
-                <button onClick={handleBook}>Reserve or Book Now!</button>
+                {days!==0 ? 
+                  <h2>
+                    <b>₹{days * data?.cheapestPrice * options?.rooms}</b>
+                    <span style={{color: 'gray'}}>({days} nights)</span>
+                  </h2> 
+                  : null
+                }
+                <button onClick={handleBook}>Explore Rooms</button>
               </div>
             </div>
           </div>

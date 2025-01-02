@@ -32,6 +32,7 @@
 }
 .hotelName{
     font-size: 24px;
+    width: 60%;
 }
 
 .hotelAddress{
@@ -44,17 +45,19 @@
 .hotelDistance {
     color: #0071c2;
     font-weight: 500;
+    width: 60%;
 }
 
 .hotelPriceHighlight {
     color: #008009;
     font-weight: 500;
+    width: 60%;
 }
 .hotelImages {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 90px;
+    // margin-top: 30px;
 }
 .hotelImgWrapper {
     width: 33%;
@@ -99,6 +102,18 @@
         font-weight: bold;
         cursor: pointer;
     }
+}
+
+.checkInDates {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #004cb8;
+    border-radius: 4px;
+    color: gray;
+    padding: 10px;
+    position: absolute;
+    right: 0px;
+    top: 55px;
 }
 
 .slider{
@@ -181,7 +196,7 @@
         width: 90%;
     }
     .bookNow{
-        width: 106px;
+        display: none;
     }
     .hotelDetails{
         flex-direction: column;
@@ -196,6 +211,15 @@
         width: 90vw;
     }
     .hotelAddress>span{
-        width: 220px;
+        width: 100%;
+    }
+    .hotelDistance {
+        width: 100%;
+    }
+    .hotelPriceHighlight {
+        width: 100%;
+    }
+    .checkInDates {
+        display: none;
     }
 }
