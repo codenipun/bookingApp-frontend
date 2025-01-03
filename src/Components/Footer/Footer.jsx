@@ -1,7 +1,35 @@
 import React from 'react'
 import "./footer.scss"
+import { Tooltip } from 'antd';
+import myPic from '../../Images/Picsart_24-07-30_10-29-21-941.jpg'
+import { GithubOutlined, InstagramOutlined, LinkedinOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
+  const tooltipContent = (
+    <div className="tooltipContent">
+      <div className="tooltipHeader">
+        <img
+          src={myPic} // Replace with the person's image URL
+          alt="person"
+          className="tooltipImage"
+        />
+        <div>
+          <div className="tooltipName">Nipun Jain</div>
+          <div className="tooltipDesignation">Software Engineer-1</div>
+          <div className="tooltipDesignation">eSec Forte Technologies</div>
+        </div>
+      </div>
+      <div className="tooltipDescription">
+        Passionate about building scalable web applications and exploring new technologies.
+      </div>
+      <div style={{display: 'flex', gap: '10px'}}>
+        <Link style={{color: 'white'}} to={'https://linkedin.com/in/nipun18'} target='_blank'><LinkedinOutlined /></Link>
+        <Link style={{color: 'white'}} to={'https://github.com/codenipun'} target='_blank'><GithubOutlined /></Link>
+      </div>
+    </div>
+  );
+  
   return (
     <div className="footer">
       <div className="fLists">
@@ -45,7 +73,13 @@ const Footer = () => {
           <li className="fListItem">Terms & conditions</li>
         </ul>
       </div>
-      <div className="fText">Made with ❤️ by &nbsp; <a className='gitName' href='https://www.github.com/codenipun'>codenipun</a></div>
+      <div className="fText">Made with ❤️ by &nbsp; 
+        <Tooltip placement="top" title={tooltipContent} overlayClassName="customTooltip">
+          <a className="gitName" href="https://www.github.com/codenipun">
+            codenipun
+          </a>
+        </Tooltip>
+      </div>
     </div>
   )
 }
