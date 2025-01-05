@@ -99,13 +99,14 @@
 
 @media (max-width: 751px) {
     .logo{
-        padding: 5px;
+        // padding: 5px;
     }
     .navButton {
         display: inline;
     }
     .navbar{
         >div{
+            width: 96%;
             >div{
                 >button{
                     display: none;
